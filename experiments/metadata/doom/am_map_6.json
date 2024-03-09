@@ -1,0 +1,149 @@
+{
+    "name": "am_map_6",
+    "snippet": "am_map_6",
+    "function_name": "AM_findMinMaxBoundaries",
+    "function_path": "/linuxdoom-1.10/am_map.c",
+    "language": "c",
+    "errors": {
+        "use_undeclared_identifier": [
+            "max_y",
+            "max_x",
+            "fixed_t",
+            "FRACBITS",
+            "vertexes",
+            "min_w",
+            "numvertexes",
+            "f_h",
+            "MAXINT",
+            "min_scale_mtof",
+            "PLAYERRADIUS",
+            "max_scale_mtof",
+            "max_w",
+            "f_w",
+            "max_h",
+            "min_y",
+            "min_h",
+            "min_x",
+            "a",
+            "b"
+        ],
+        "call_undeclared_function": [
+            "FixedDiv"
+        ]
+    },
+    "declarations": [
+        {
+            "type": "alias",
+            "name": "fixed_t",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "min_x",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "min_y",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "MAXINT",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "max_x",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "max_y",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "numvertexes",
+            "typename": "int"
+        },
+        {
+            "type": "struct",
+            "name": "TYPE1",
+            "members": [
+                {
+                    "name": "x",
+                    "typename": "int"
+                },
+                {
+                    "name": "y",
+                    "typename": "int"
+                }
+            ]
+        },
+        {
+            "type": "var",
+            "name": "vertexes",
+            "typename": "TYPE1[]"
+        },
+        {
+            "type": "var",
+            "name": "max_w",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "max_h",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "min_w",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "min_h",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "PLAYERRADIUS",
+            "typename": "int"
+        },
+        {
+            "type": "func",
+            "name": "FixedDiv",
+            "return_typename": "int",
+            "argument_typenames": [
+                "int",
+                "int"
+            ]
+        },
+        {
+            "type": "var",
+            "name": "f_w",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "FRACBITS",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "f_h",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "min_scale_mtof",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "max_scale_mtof",
+            "typename": "int"
+        }
+    ]
+}

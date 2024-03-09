@@ -1,0 +1,75 @@
+{
+    "name": "am_map_2",
+    "snippet": "am_map_2",
+    "function_name": "AM_activateNewScale",
+    "function_path": "/linuxdoom-1.10/am_map.c",
+    "language": "c",
+
+    "errors": {
+        "use_undeclared_identifier": [
+            "m_x", "m_w", "m_y", "m_h", "f_w", "f_h", "m_x2", "m_y2"
+        ],
+        "call_undeclared_function": [
+            "FTOM"
+        ]
+    },
+
+    "declarations": [
+        {
+            "type": "var",
+            "name": "m_x",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_w",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_y",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_h",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "f_w",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "f_h",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_x2",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_y2",
+            "typename": "int"
+        },
+
+        {
+            "type": "func",
+            "name": "FTOM",
+            "return_typename": "int",
+            "argument_typenames": [
+                "int"
+            ]
+        }
+    ]
+}

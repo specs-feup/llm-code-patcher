@@ -1,0 +1,36 @@
+{
+    "name": "am_map_5",
+    "snippet": "am_map_5",
+    "function_name": "AM_addMark",
+    "function_path": "/linuxdoom-1.10/am_map.c",
+    "language": "c",
+
+    "errors": {
+        "use_undeclared_identifier": [
+            "markpoints", "markpointnum", "m_x", "m_w", "m_y", "m_h", "AM_NUMMARKPOINTS"
+        ]
+    },
+
+    "declarations": [
+        {
+            "type": "var",
+            "name": "markpointnum",
+            "typename": "int"
+        },
+
+        {
+            "type": "struct",
+            "name": "TYPE1",
+            "members": [
+                {
+                    "typename": "int",
+                    "name": "x"
+                },
+                {
+                    "typename": "int",
+                    "name": "y"
+                }
+            ] 
+        }
+    ]
+}

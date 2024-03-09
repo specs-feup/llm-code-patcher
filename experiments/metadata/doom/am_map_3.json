@@ -1,0 +1,71 @@
+{
+    "name": "am_map_3",
+    "snippet": "am_map_3",
+    "function_name": "AM_saveScaleAndLoc",
+    "function_path": "/linuxdoom-1.10/am_map.c",
+    "language": "c",
+
+    
+    "errors": {
+        "use_undeclared_identifier": [
+            "old_m_x",
+            "m_x",
+            "old_m_y",
+            "m_y",
+            "old_m_w",
+            "m_w",
+            "old_m_h",
+            "m_h"
+        ]
+    },
+
+    "declarations": [
+        {
+            "type": "var",
+            "name": "old_m_x",
+            "typename": "UNRESOLVED"
+        },
+
+        {
+            "type": "var",
+            "name": "m_x",
+            "typename": "UNRESOLVED"
+        },
+
+        {
+            "type": "var",
+            "name": "old_m_y",
+            "typename": "UNRESOLVED"
+        },
+
+        {
+            "type": "var",
+            "name": "m_y",
+            "typename": "UNRESOLVED"
+        },
+
+        {
+            "type": "var",
+            "name": "old_m_w",
+            "typename": "UNRESOLVED"
+        },
+
+        {
+            "type": "var",
+            "name": "m_w",
+            "typename": "UNRESOLVED"
+        },
+
+        {
+            "type": "var",
+            "name": "old_m_h",
+            "typename": "UNRESOLVED"
+        },
+
+        {
+            "type": "var",
+            "name": "m_h",
+            "typename": "UNRESOLVED"
+        }
+    ]
+}

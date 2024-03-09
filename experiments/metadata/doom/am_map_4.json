@@ -1,0 +1,160 @@
+{
+    "name": "am_map_4",
+    "snippet": "am_map_4",
+    "function_name": "AM_restoreScaleAndLoc",
+    "function_path": "/linuxdoom-1.10/am_map.c",
+    "language": "c",
+
+    "errors": {
+        "use_undeclared_identifier": [
+            "m_w", "old_m_w", "m_h", "old_m_h", "followplayer",
+            "m_x", "old_m_x", "m_y", "old_m_y", "plr", "m_x2", "m_y2",
+            "scale_mtof", "f_w", "FRACBITS", "scale_ftom", "FRACUNIT"
+        ],
+        "call_undeclared_function": [
+            "FixedDiv"
+        ]
+    },
+
+    "declarations": [
+        {
+            "type": "var",
+            "name": "m_w",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "old_m_w",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_h",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "old_m_h",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "followplayer",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_x",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "old_m_x",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_y",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "old_m_y",
+            "typename": "int"
+        },
+
+        {
+            "type": "struct",
+            "name": "TYPE1",
+            "members": [
+                {
+                    "type": "memb",
+                    "name": "x",
+                    "typename": "int"
+                },
+                {
+                    "type": "memb",
+                    "name": "y",
+                    "typename": "int"
+                }
+            ]
+        },
+
+        {
+            "type": "struct",
+            "name": "TYPE2",
+            "members": [
+                {
+                    "type": "memb",
+                    "name": "mo",
+                    "typename": "TYPE1*"
+                }
+            ]
+        },
+
+        {
+            "type": "var",
+            "name": "plr",
+            "typename": "TYPE2*"
+        },
+
+        {
+            "type": "var",
+            "name": "m_x2",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "m_y2",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "scale_mtof",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "scale_ftom",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "f_w",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "FRACBITS",
+            "typename": "int"
+        },
+
+        {
+            "type": "var",
+            "name": "FRACUNIT",
+            "typename": "int"
+        },
+
+        {
+            "type": "func",
+            "name": "FixedDiv",
+            "return_typename": "int",
+            "argument_typenames": [
+                "int", "int"
+            ]
+        }
+    ]
+}

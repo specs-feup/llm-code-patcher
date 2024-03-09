@@ -1,0 +1,97 @@
+{
+    "name": "am_map_1",
+    "snippet": "am_map_1",
+    "function_name": "AM_getIslope",
+    "function_path": "/linuxdoom-1.10/am_map.c",
+    "language": "c",
+
+    "errors": {
+        "unknown_type_name": [
+            "mline_t", "islope_t"
+        ],
+        "use_undeclared_identifier": [
+            "MAXINT"
+        ],
+        "call_undeclared_function": [
+            "FixedDiv"
+        ]
+    },
+
+    "declarations": [
+        {
+            "type": "struct",
+            "name": "TYPE1",
+            "members": [
+                {
+                    "typename": "int",
+                    "name": "x"
+                },
+                {
+                    "typename": "int",
+                    "name": "y" 
+                }
+            ]
+        },
+
+        {
+            "type": "struct",
+            "name": "TYPE2",
+            "members": [
+                {
+                    "typename": "int",
+                    "name": "x"
+                },
+                {
+                    "typename": "int",
+                    "name": "y" 
+                }
+            ]
+        },
+
+        {
+            "type": "struct",
+            "name": "mline_t",
+            "members": [
+                {
+                    "typename": "TYPE1",
+                    "name": "a"
+                },
+                {
+                    "typename": "TYPE2",
+                    "name": "b"
+                }
+            ]
+        },
+
+        {
+            "type": "struct",
+            "name": "islope_t",
+            "members": [
+                {
+                    "typename": "int",
+                    "name": "slp"
+                },
+                {
+                    "typename": "int",
+                    "name": "islp"
+                }
+            ] 
+        },
+
+        {
+            "type": "var",
+            "name": "MAXINT",
+            "typename": "int"
+        },
+
+        {
+            "type": "func",
+            "name": "FixedDiv",
+            "return_typename": "int",
+            "argument_typenames": [
+                "int",
+                "int"
+            ]
+        }
+    ]
+}
