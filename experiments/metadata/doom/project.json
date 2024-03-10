@@ -1,4 +1,6 @@
 {
     "project": "DOOM",
-    "org": "id-Software"
+    "org": "id-Software",
+    "repository": "https://github.com/id-Software/DOOM",
+    "license": "GPLv2"
 }

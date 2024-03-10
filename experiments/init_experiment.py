@@ -132,7 +132,9 @@ def main():
     else:
         project_metadata = {
             "org": input("Enter project organization: "),
-            "project": input("Enter project name: ")
+            "project": input("Enter project name: "),
+            "repository": input("Enter project repository: "),
+            "license": input("Enter project license: ")
         }
 
         os.mkdir(project_path)
@@ -154,6 +156,7 @@ def main():
     experiment["name"] = input("Enter the experiment name (press enter for same name as the snippet): ")
     experiment["snippet"] = input("Enter the snippet name: ")
     experiment["name"] = experiment["snippet"] if experiment["name"] == "" else experiment["name"]
+    experiment["commit_hash"] = input("Enter the commit hash: ")
     experiment["function_name"] = input("Enter the function name: ")
     experiment["function_path"] = input("Enter the function path: ")
 

@@ -1,0 +1,18 @@
+- The experiments done in this project utilize code snippets from many open-source projects.
+- The following concerns apply:
+    1. **License Compliance:** The extracted code snippets are subject to the licenses of the respective open-source projects. The users of this project/thesis are responsible for understanding and complying with the terms of these licenses.
+    2. **Attribution:** The original authors and contributors of the open-source projects deserve credit for their work. Please refer to the metadata provided for information on the source of each function.
+    3. **No Endorsement:** The inclusion of code from open-source projects in this project/thesis does not imply endorsement or support from the original authors or the open-source community.
+
+- The snippets are included in [snippets folder](/experiments/snippets/) and their only alterations include formatting and removal of some comments which don't add relevant information to the task at hand.
+
+- The [metadata folder](/experiments/metadata/) includes relevant information on each open-source project (project.json files), namely:
+    - The project's name
+    - The project's organization
+    - Source code repository
+    - License
+
+- Each project folder in the [metadata folder](/experiments/metadata/) also includes information on each snippet extracted from that project, namely:
+    - Hash of the commit where the snippet was extracted
+    - Function name(s) of the snippets
+    - Function path(s) of the snippets on the project tree

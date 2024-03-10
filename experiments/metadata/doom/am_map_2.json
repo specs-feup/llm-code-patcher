@@ -1,6 +1,7 @@
 {
     "name": "am_map_2",
     "snippet": "am_map_2",
+    "commit_hash": "a77dfb96cb91780ca334d0d4cfd86957558007e0",
     "function_name": "AM_activateNewScale",
     "function_path": "/linuxdoom-1.10/am_map.c",
     "language": "c",
