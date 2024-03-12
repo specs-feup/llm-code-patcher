@@ -8,9 +8,10 @@ import os
 def parse_errors(file):
     errors = {}
 
-    typename_matches = list(set(re.findall("unknown type name '(.+)'", file)))
-    identifier_matches = list(set(re.findall("use of undeclared identifier '(.+)'", file)))
-    function_matches = list(set(re.findall("call to undeclared function '(.+)'", file)))
+    typename_matches = list(set(re.findall("unknown type name '([^']+)'", file)))
+    identifier_matches = list(set(re.findall("use of undeclared identifier '([^']+)'", file)))
+    function_matches = list(set(re.findall("call to undeclared function '([^']+)'", file)))
+    library_function_matches = list(set(re.findall("call to undeclared library function '([^']+)'", file)))
 
     if len(typename_matches) != 0:
         errors["unknown_type_name"] = typename_matches
@@ -20,6 +21,9 @@ def parse_errors(file):
     
     if len(function_matches) != 0:
         errors["call_undeclared_function"] = function_matches
+
+    if len(library_function_matches) != 0:
+        errors["call_undeclared_library_function"] = library_function_matches
 
     return errors
 
@@ -168,11 +172,11 @@ def main():
 
         print("Invalid language. Please enter a valid language.")
            
-    errors_filepath = input("Enter the path to the LLVM errors file: ")
-    declarations_filepath = input("Enter the path to the LLVM declarations file: ")
+    #errors_filepath = input("Enter the path to the LLVM errors file: ")
+    #declarations_filepath = input("Enter the path to the LLVM declarations file: ")
 
-    #errors_filepath = "./errors.txt"
-    #declarations_filepath = "./declarations.txt"
+    errors_filepath = "./errors.txt"
+    declarations_filepath = "./declarations.txt"
 
     try:
         with open(errors_filepath, 'r') as file:
