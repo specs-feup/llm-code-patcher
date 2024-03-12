@@ -28,7 +28,8 @@ def get_all_errors_as_str(data):
     errors = [
         get_single_error_type_as_str(data, "unknown_type_name", "    - unknown type name"),
         get_single_error_type_as_str(data, "use_undeclared_identifier", "    - use of undeclared identifier"),
-        get_single_error_type_as_str(data, "call_undeclared_function", "    - call to undeclared function")]
+        get_single_error_type_as_str(data, "call_undeclared_function", "    - call to undeclared function"),
+        get_single_error_type_as_str(data, "call_undeclared_library_function", "    - call to undeclared library function")]
 
     errors = filter(lambda x: x != "", errors)
 
