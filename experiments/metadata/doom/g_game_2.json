@@ -1,0 +1,85 @@
+{
+    "name": "g_game_2",
+    "snippet": "g_game_2",
+    "commit_hash": "a77dfb96cb91780ca334d0d4cfd86957558007e0",
+    "function_name": "G_PlayerFinishLevel",
+    "function_path": "/linuxdoom-1.10/g_game.c",
+    "language": "c",
+    "errors": {
+        "use_undeclared_identifier": [
+            "players",
+            "p",
+            "MF_SHADOW",
+            "player_t"
+        ],
+        "call_undeclared_library_function": [
+            "memset"
+        ]
+    },
+    "declarations": [
+        {
+            "type": "struct",
+            "name": "TYPE1",
+            "members": [
+                {
+                    "name": "flags",
+                    "typename": "int"
+                }
+            ]
+        },
+        {
+            "type": "struct",
+            "name": "player_t",
+            "members": [
+                {
+                    "name": "mo",
+                    "typename": "TYPE1*"
+                },
+                {
+                    "name": "extralight",
+                    "typename": "int"
+                },
+                {
+                    "name": "fixedcolormap",
+                    "typename": "int"
+                },
+                {
+                    "name": "damagecount",
+                    "typename": "int"
+                },
+                {
+                    "name": "bonuscount",
+                    "typename": "int"
+                },
+                {
+                    "name": "powers",
+                    "typename": "UNRESOLVED[]"
+                },
+                {
+                    "name": "cards",
+                    "typename": "UNRESOLVED[]"
+                }
+            ]
+        },
+        {
+            "type": "var",
+            "name": "players",
+            "typename": "player_t[]"
+        },
+        {
+            "type": "var",
+            "name": "MF_SHADOW",
+            "typename": "int"
+        },
+        {
+            "type": "func",
+            "name": "memset",
+            "return_typename": "void*",
+            "argument_typenames": [
+                "void*",
+                "int",
+                "ulong"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+{
+    "name": "i_video_3",
+    "snippet": "i_video_3",
+    "commit_hash": "a77dfb96cb91780ca334d0d4cfd86957558007e0",
+    "function_name": "I_StartTic",
+    "function_path": "/linuxdoom-1.10/i_video.c",
+    "language": "c",
+    "errors": {
+        "use_undeclared_identifier": [
+            "false",
+            "X_width",
+            "X_display",
+            "mousemoved",
+            "None",
+            "POINTER_WARP_COUNTDOWN",
+            "X_mainWindow",
+            "grabMouse",
+            "X_height",
+            "doPointerWarp"
+        ],
+        "call_undeclared_function": [
+            "XPending",
+            "XWarpPointer",
+            "I_GetEvent"
+        ]
+    },
+    "declarations": [
+        {
+            "type": "var",
+            "name": "X_display",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "grabMouse",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "doPointerWarp",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "None",
+            "typename": "UNRESOLVED"
+        },
+        {
+            "type": "var",
+            "name": "X_mainWindow",
+            "typename": "UNRESOLVED"
+        },
+        {
+            "type": "var",
+            "name": "X_width",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "X_height",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "POINTER_WARP_COUNTDOWN",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "mousemoved",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "false",
+            "typename": "int"
+        },
+        {
+            "type": "func",
+            "name": "XPending",
+            "return_typename": "int",
+            "argument_typenames": [
+                "int"
+            ]
+        },
+        {
+            "type": "func",
+            "name": "I_GetEvent",
+            "return_typename": "void",
+            "argument_typenames": []
+        },
+        {
+            "type": "func",
+            "name": "XWarpPointer",
+            "return_typename": "int",
+            "argument_typenames": [
+                "int",
+                "UNRESOLVED",
+                "UNRESOLVED",
+                "int",
+                "int",
+                "int",
+                "int",
+                "int",
+                "int"
+            ]
+        }
+    ]
+}

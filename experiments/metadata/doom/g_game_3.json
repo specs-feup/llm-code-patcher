@@ -1,0 +1,160 @@
+{
+    "name": "g_game_3",
+    "snippet": "g_game_3",
+    "commit_hash": "a77dfb96cb91780ca334d0d4cfd86957558007e0",
+    "function_name": "G_PlayerReborn",
+    "function_path": "/linuxdoom-1.10/g_game.c",
+    "language": "c",
+    "errors": {
+        "use_undeclared_identifier": [
+            "players",
+            "player_t",
+            "maxammo",
+            "NUMAMMO",
+            "true",
+            "MAXPLAYERS",
+            "PST_LIVE",
+            "wp_pistol",
+            "wp_fist",
+            "am_clip",
+            "p",
+            "MAXHEALTH"
+        ],
+        "call_undeclared_library_function": [
+            "memset",
+            "memcpy"
+        ]
+    },
+    "declarations": [
+        {
+            "type": "enum",
+            "name": "TYPE1",
+            "values": [
+                "PST_LIVE"
+            ]
+        },
+        {
+            "type": "struct",
+            "name": "player_t",
+            "members": [
+                {
+                    "name": "frags",
+                    "typename": "int[]"
+                },
+                {
+                    "name": "killcount",
+                    "typename": "int"
+                },
+                {
+                    "name": "itemcount",
+                    "typename": "int"
+                },
+                {
+                    "name": "secretcount",
+                    "typename": "int"
+                },
+                {
+                    "name": "usedown",
+                    "typename": "int"
+                },
+                {
+                    "name": "playerstate",
+                    "typename": "TYPE1"
+                },
+                {
+                    "name": "attackdown",
+                    "typename": "int"
+                },
+                {
+                    "name": "health",
+                    "typename": "int"
+                },
+                {
+                    "name": "readyweapon",
+                    "typename": "int"
+                },
+                {
+                    "name": "pendingweapon",
+                    "typename": "int"
+                },
+                {
+                    "name": "weaponowned",
+                    "typename": "int[]"
+                },
+                {
+                    "name": "ammo",
+                    "typename": "int[]"
+                },
+                {
+                    "name": "maxammo",
+                    "typename": "int[]"
+                }
+            ]
+        },
+        {
+            "type": "var",
+            "name": "MAXPLAYERS",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "players",
+            "typename": "player_t[]"
+        },
+        {
+            "type": "var",
+            "name": "true",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "MAXHEALTH",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "NUMAMMO",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "wp_pistol",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "wp_fist",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "am_clip",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "maxammo",
+            "typename": "int[]"
+        },
+        {
+            "type": "func",
+            "name": "memcpy",
+            "return_typename": "void*",
+            "argument_typenames": [
+                "void*",
+                "void*",
+                "ulong"
+            ]
+        },
+        {
+            "type": "func",
+            "name": "memset",
+            "return_typename": "void*",
+            "argument_typenames": [
+                "void*",
+                "int",
+                "ulong"
+            ]
+        }
+    ]
+}

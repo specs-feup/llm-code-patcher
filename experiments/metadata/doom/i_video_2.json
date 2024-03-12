@@ -1,0 +1,103 @@
+{
+    "name": "i_video_2",
+    "snippet": "i_video_2",
+    "commit_hash": "a77dfb96cb91780ca334d0d4cfd86957558007e0",
+    "function_name": "I_ShutdownGraphics",
+    "function_path": "/linuxdoom-1.10/i_video.c",
+    "language": "c",
+    "errors": {
+        "use_undeclared_identifier": [
+            "IPC_RMID",
+            "X_shminfo",
+            "X_display",
+            "image"
+        ],
+        "call_undeclared_function": [
+            "I_Error",
+            "shmctl",
+            "shmdt",
+            "XShmDetach"
+        ]
+    },
+    "declarations": [
+        {
+            "type": "struct",
+            "name": "TYPE1",
+            "members": [
+                {
+                    "name": "shmaddr",
+                    "typename": "void*"
+                },
+                {
+                    "name": "shmid",
+                    "typename": "int"
+                }
+            ]
+        },
+        {
+            "type": "struct",
+            "name": "TYPE2",
+            "members": [
+                {
+                    "name": "data",
+                    "typename": "void*"
+                }
+            ]
+        },
+        {
+            "type": "var",
+            "name": "X_display",
+            "typename": "UNRESOLVED"
+        },
+        {
+            "type": "var",
+            "name": "X_shminfo",
+            "typename": "TYPE1"
+        },
+        {
+            "type": "var",
+            "name": "IPC_RMID",
+            "typename": "int"
+        },
+        {
+            "type": "var",
+            "name": "image",
+            "typename": "TYPE2*"
+        },
+        {
+            "type": "func",
+            "name": "XShmDetach",
+            "return_typename": "int",
+            "argument_typenames": [
+                "UNRESOLVED",
+                "TYPE1*"
+            ]
+        },
+        {
+            "type": "func",
+            "name": "I_Error",
+            "return_typename": "void",
+            "argument_typenames": [
+                "char*"
+            ]
+        },
+        {
+            "type": "func",
+            "name": "shmdt",
+            "return_typename": "void",
+            "argument_typenames": [
+                "void*"
+            ]
+        },
+        {
+            "type": "func",
+            "name": "shmctl",
+            "return_typename": "void",
+            "argument_typenames": [
+                "int",
+                "int",
+                "int"
+            ]
+        }
+    ]
+}

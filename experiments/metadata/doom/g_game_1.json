@@ -1,0 +1,38 @@
+{
+    "name": "g_game_1",
+    "snippet": "g_game_1",
+    "commit_hash": "a77dfb96cb91780ca334d0d4cfd86957558007e0",
+    "function_name": "G_InitPlayer",
+    "function_path": "/linuxdoom-1.10/g_game.c",
+    "language": "c",
+    "errors": {
+        "use_undeclared_identifier": [
+            "player_t",
+            "p",
+            "players"
+        ],
+        "call_undeclared_function": [
+            "G_PlayerReborn"
+        ]
+    },
+    "declarations": [
+        {
+            "type": "struct",
+            "name": "player_t",
+            "members": []
+        },
+        {
+            "type": "var",
+            "name": "players",
+            "typename": "player_t[]"
+        },
+        {
+            "type": "func",
+            "name": "G_PlayerReborn",
+            "return_typename": "void",
+            "argument_typenames": [
+                "int"
+            ]
+        }
+    ]
+}
