@@ -1,10 +1,15 @@
 import json
 import os
-import subprocess
 import os.path
+import time
+from datetime import datetime
+from openai import OpenAI
+from dotenv import load_dotenv
 
 CODE_TAG = "<CODE>"
 ERRORS_TAG = "<ERRORS>"
+
+load_dotenv()
 
 def get_single_error_type_as_str(data, error_type, error_msg_prefix=""):
     if not error_type in data["errors"]:
@@ -126,10 +131,10 @@ def select_prompt_template():
     if os.path.exists(prompts_path):
         if os.path.isfile(prompts_path):
             print("Provided prompt path is a file, not a directory")
-            return None
+            return None, None
     else:
         print("Provided prompt path doesn't exist. Aborting..")
-        return None
+        return None, None
     
     prompts = get_files_from_path(prompts_path)
 
@@ -148,7 +153,7 @@ def select_prompt_template():
     with open(prompt_template_path, 'r') as file:
         prompt_template = file.read()
 
-    return prompt_template
+    return prompt_template, prompt_template_filename
 
 def select_project(projects):
     project_dirnames = projects.keys()
@@ -178,8 +183,7 @@ def select_experiment(project):
 
     return project["experiments"][filename], filename
 
-
-def test_experiment(projects, prompt_template):
+def test_experiment(projects, prompt_template, prompt_template_filename, raw_results_path):
     project, dirname = select_project(projects)
 
     project_name = project["metadata"]["project"]
@@ -200,11 +204,13 @@ def test_experiment(projects, prompt_template):
 
     prompt = build_prompt(prompt_template, snippet, errors)
 
-    print(prompt)
+    chat_completion, gen_time = prompt_llm(prompt)
 
-    return ""
+    save_experiment_result(chat_completion, gen_time, raw_results_path, experiment_name, project_name, project_org, prompt_template_filename)
 
-def test_project(projects, prompt_template):
+    #print(prompt)
+
+def test_project(projects, prompt_template, prompt_template_filename, raw_results_path):
     project, dirname = select_project(projects)
 
     project_name = project["metadata"]["project"]
@@ -225,11 +231,13 @@ def test_project(projects, prompt_template):
 
         prompt = build_prompt(prompt_template, snippet, errors)
 
-        print(prompt)
-    
-    return ""
+        chat_completion, gen_time = prompt_llm(prompt)
 
-def test_all_projects(projects, prompt_template):
+        save_experiment_result(chat_completion, gen_time, raw_results_path, experiment_name, project_name, project_org, prompt_template_filename)
+
+        #print(prompt)
+
+def test_all_projects(projects, prompt_template, prompt_template_filename, raw_results_path):
     for dirname, project in projects.items():
         #print(json.dumps(project, indent=2))
         project_name = project["metadata"]["project"]
@@ -250,39 +258,156 @@ def test_all_projects(projects, prompt_template):
 
             prompt = build_prompt(prompt_template, snippet, errors)
 
-            print(prompt)
+            chat_completion, gen_time = prompt_llm(prompt)
+
+            save_experiment_result(chat_completion, gen_time, raw_results_path, experiment_name, project_name, project_org, prompt_template_filename)
+            #print(prompt)
+
+def prompt_llm(prompt):
+    client = OpenAI()
+    '''chat_completion = {
+        "created": 121214148798,
+        "model": "3eheheh",
+        "usage": {
+            "prompt_tokens": 21,
+            "completion_tokens": 2,
+            "total_tokens": 23
+        },
+        "choices": [
+            {
+                "message": {
+                    "content": "hi"
+                }
+            }
+        ]
+    }'''
+
+    input()
+    start_time = time.time()
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        model="gpt-4"
+    )
+
+    gen_time = time.time() - start_time
+    print(f"LLM answered in {gen_time}")
+    #print(prompt)
+    #print(chat_completion)
+
+    return chat_completion, gen_time
+
+def select_raw_results_path():
+    raw_results_path = input("Enter experiment raw results path (press Enter for default path \"./raw_results\"): ")
+
+    raw_results_path = "./raw_results" if raw_results_path == "" else raw_results_path
+
+    if os.path.exists(raw_results_path):
+        if os.path.isfile(raw_results_path):
+            print("Provided raw results path is a file, not a directory")
+            return None
+    else:
+        print("Provided raw results path doesn't exist. Creating one..")
+        os.mkdir(raw_results_path, mode=777)
     
-    return ""
+    return raw_results_path
+    
+def save_experiment_result(chat_completion, gen_time, raw_results_path, experiment_name,
+                           project_name, org_name, prompt_name):
+
+    results = {
+        "experiment": experiment_name,
+        "project": project_name,
+        "org": org_name,
+        "created_unix": chat_completion.created,
+        "created_iso": datetime.fromtimestamp(chat_completion.created).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "prompt": prompt_name,
+        "model": chat_completion.model,
+        "prompt_tokens": chat_completion.usage.prompt_tokens,
+        "answer_tokens": chat_completion.usage.completion_tokens,
+        "total_tokens": chat_completion.usage.total_tokens,
+        "prompt_gen_time": gen_time,
+        "llm_answer": chat_completion.choices[0].message.content
+    }
+
+    '''    
+    results = {
+        "experiment": experiment_name,
+        "project": project_name,
+        "org": org_name,
+        "created_unix": chat_completion["created"],
+        "created_iso": datetime.fromtimestamp(chat_completion["created"]).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "prompt": prompt_name,
+        "model": chat_completion["model"],
+        "prompt_tokens": chat_completion["usage"]["prompt_tokens"],
+        "answer_tokens": chat_completion["usage"]["completion_tokens"],
+        "total_tokens": chat_completion["usage"]["total_tokens"],
+        "llm_answer": chat_completion["choices"][0]["message"]["content"]
+    }
+    '''
+
+    created_unix = results["created_unix"]
+    experiment_results_path = os.path.join(raw_results_path,
+                f"{experiment_name}_{project_name}_{org_name}_{created_unix}.json")
+
+    try:
+        with open(experiment_results_path, 'w') as results_file:
+            results_file.write(json.dumps(results, indent=4))
+            results_file.close()
+    except Exception:
+        print("Couldn't create results file")
+        return
+
+    print("Experiment results created correctly")
 
 def main():
     metadata_path = select_metadata_path() 
     if metadata_path == None:
+        return
+    
+    raw_results_path = select_raw_results_path()
+    if raw_results_path == None:
         return
 
     projects = get_projects(metadata_path)
     if projects == None:
         return
     
-    prompt_template = select_prompt_template()
-
-    if prompt_template == None:
-        return None
-    
-    print("Select testing mode:\n   [0] Specific experiment from a project\n   [1] All experiments from a project\n   [2] All projects")
-
     while True:
-        testing_mode = input(">> ")
-        if not testing_mode in ["0", "1", "2"]:
-            print("Invalid option. Try again:")
-        else:
-            break
+        prompt_template, prompt_template_filename = select_prompt_template()
 
-    if testing_mode == "0":
-        test_experiment(projects, prompt_template)
-    elif testing_mode == "1":
-        test_project(projects, prompt_template)
-    elif testing_mode == "2":
-        test_all_projects(projects, prompt_template)
+        if prompt_template == None:
+            return None
+        
+        print("Select testing mode:\n   [0] Specific experiment from a project\n   [1] All experiments from a project\n   [2] All projects")
+
+        while True:
+            testing_mode = input(">> ")
+            if not testing_mode in ["0", "1", "2"]:
+                print("Invalid option. Try again:")
+            else:
+                break
+
+        if testing_mode == "0":
+            test_experiment(projects, prompt_template, prompt_template_filename, raw_results_path)
+        elif testing_mode == "1":
+            test_project(projects, prompt_template, prompt_template_filename, raw_results_path)
+        elif testing_mode == "2":
+            test_all_projects(projects, prompt_template, prompt_template_filename, raw_results_path)
+
+        while True:
+            continue_exec = input("Continue experiments (y/N): ")
+            if not continue_exec.lower() in ["y", "yes", "n", "no"]:
+                continue_exec = print("Incorrect option. Try again:")
+            else:
+                break
+            
+        if continue_exec.lower() in ["n", "no"]:
+            break
 
 if __name__ == "__main__":
     main()
