@@ -1,3 +1,5 @@
+#include "math.h"
+
 static int global = 0;
 
 struct s {

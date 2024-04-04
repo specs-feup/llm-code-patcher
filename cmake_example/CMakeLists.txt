@@ -12,6 +12,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -O3 -mcmodel=medium")
 
 set(SOURCE_FILES
 	example.c
+	C://msys64//clang64//include//math.h
 )
 
 
@@ -25,4 +26,5 @@ find_package(Clava REQUIRED)
 
 # Call AutoPar
 #clava_weave(example SeparateFunctions.mjs)
-clava_weave(example ExtractSymbols.mjs)
+#clava_weave(example ExtractSymbols.mjs)
+clava_weave(example ExtractHeaderInfo.mjs FLAGS -pi -ist 0)
