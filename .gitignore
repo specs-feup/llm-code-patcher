@@ -2,3 +2,5 @@ __pycache__
 errors.txt
 declarations.txt
 .env
+
+build/
