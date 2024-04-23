@@ -43,13 +43,13 @@
         {
             "type": "var",
             "name": "f_w",
-            "typename": "int"
+            "typename": "UNRESOLVED"
         },
 
         {
             "type": "var",
             "name": "f_h",
-            "typename": "int"
+            "typename": "UNRESOLVED"
         },
 
         {
@@ -69,7 +69,7 @@
             "name": "FTOM",
             "return_typename": "int",
             "argument_typenames": [
-                "int"
+                "UNRESOLVED"
             ]
         }
     ]

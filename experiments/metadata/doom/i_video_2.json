@@ -26,11 +26,11 @@
             "members": [
                 {
                     "name": "shmaddr",
-                    "typename": "void*"
+                    "typename": "UNRESOLVED"
                 },
                 {
                     "name": "shmid",
-                    "typename": "int"
+                    "typename": "UNRESOLVED"
                 }
             ]
         },
@@ -57,7 +57,7 @@
         {
             "type": "var",
             "name": "IPC_RMID",
-            "typename": "int"
+            "typename": "UNRESOLVED"
         },
         {
             "type": "var",
@@ -86,7 +86,7 @@
             "name": "shmdt",
             "return_typename": "void",
             "argument_typenames": [
-                "void*"
+                "UNRESOLVED"
             ]
         },
         {
@@ -94,9 +94,9 @@
             "name": "shmctl",
             "return_typename": "void",
             "argument_typenames": [
-                "int",
-                "int",
-                "int"
+                "UNRESOLVED",
+                "UNRESOLVED",
+                "UNRESOLVED"
             ]
         }
     ]

@@ -83,7 +83,7 @@
             "members": [
                 {
                     "name": "keycode",
-                    "typename": "int"
+                    "typename": "UNRESOLVED"
                 }
             ]
         },
