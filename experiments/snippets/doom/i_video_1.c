@@ -6,7 +6,7 @@ int xlatekey(void)
 {
 
     int rc;
-
+    
     switch(rc = XKeycodeToKeysym(X_display, X_event.xkey.keycode, 0))
     {
       case XK_Left:	rc = KEY_LEFTARROW;	break;

@@ -1,3 +1,5 @@
+#define NULL ((void *)0)
+
 void I_ShutdownGraphics(void) {
   // Detach from X server
   if (!XShmDetach(X_display, &X_shminfo))
