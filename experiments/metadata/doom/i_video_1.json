@@ -1,6 +1,6 @@
 {
     "name": "i_video_1",
-    "snippet": "i_video_1",
+    "snippet": "i_video_1.c",
     "commit_hash": "a77dfb96cb91780ca334d0d4cfd86957558007e0",
     "function_name": "xlatekey",
     "function_path": "/linuxdoom-1.10/i_video.c",
