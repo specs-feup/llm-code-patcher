@@ -10,10 +10,12 @@ ENUM: 'enum' ;
 ALIAS: 'alias' ;
 MEMBER: 'memb' ;
 
+// TODO make this more stricted (pointers before arrays) and allow white space between pointers and arrays
+// TODO think about pointers to arrays
 ID: [a-zA-Z0-9_]+('[]' | '*')* ;
 
 start : declaration*  ;
-
+// TODO think about pointers to functions
 declaration
     : type=ALIAS name=ID ':' typename=ID
     | type=VAR name=ID ':' typename=ID
