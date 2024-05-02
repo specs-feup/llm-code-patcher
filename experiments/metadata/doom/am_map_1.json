@@ -20,7 +20,7 @@
 
     "declarations": [
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE1",
             "members": [
                 {
@@ -35,7 +35,7 @@
         },
 
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE2",
             "members": [
                 {
@@ -50,7 +50,7 @@
         },
 
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "mline_t",
             "members": [
                 {
@@ -65,7 +65,7 @@
         },
 
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "islope_t",
             "members": [
                 {
@@ -80,13 +80,13 @@
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "MAXINT",
             "typename": "int"
         },
 
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "FixedDiv",
             "return_typename": "int",
             "argument_typenames": [

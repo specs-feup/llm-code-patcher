@@ -17,55 +17,55 @@
 
     "declarations": [
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_x",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_w",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_y",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_h",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "f_w",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "f_h",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_x2",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_y2",
             "typename": "int"
         },
 
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "FTOM",
             "return_typename": "int",
             "argument_typenames": [

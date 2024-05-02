@@ -21,49 +21,49 @@
 
     "declarations": [
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "old_m_x",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_x",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "old_m_y",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_y",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "old_m_w",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_w",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "old_m_h",
             "typename": "UNRESOLVED"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_h",
             "typename": "UNRESOLVED"
         }

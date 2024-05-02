@@ -19,70 +19,70 @@
 
     "declarations": [
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_w",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "old_m_w",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_h",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "old_m_h",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "followplayer",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_x",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "old_m_x",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_y",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "old_m_y",
             "typename": "int"
         },
 
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE1",
             "members": [
                 {
-                    "type": "memb",
+                    "decl_type": "memb",
                     "name": "x",
                     "typename": "int"
                 },
                 {
-                    "type": "memb",
+                    "decl_type": "memb",
                     "name": "y",
                     "typename": "int"
                 }
@@ -90,11 +90,11 @@
         },
 
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE2",
             "members": [
                 {
-                    "type": "memb",
+                    "decl_type": "memb",
                     "name": "mo",
                     "typename": "TYPE1*"
                 }
@@ -102,55 +102,55 @@
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "plr",
             "typename": "TYPE2*"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_x2",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "m_y2",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "scale_mtof",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "scale_ftom",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "f_w",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "FRACBITS",
             "typename": "int"
         },
 
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "FRACUNIT",
             "typename": "int"
         },
 
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "FixedDiv",
             "return_typename": "int",
             "argument_typenames": [

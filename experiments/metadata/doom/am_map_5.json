@@ -14,13 +14,13 @@
 
     "declarations": [
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "markpointnum",
             "typename": "int"
         },
 
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE1",
             "members": [
                 {

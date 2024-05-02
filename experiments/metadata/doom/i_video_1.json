@@ -78,7 +78,7 @@
     },
     "declarations": [
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE1",
             "members": [
                 {
@@ -88,7 +88,7 @@
             ]
         },
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE2",
             "members": [
                 {
@@ -98,7 +98,7 @@
             ]
         },
         {
-            "type": "enum",
+            "decl_type": "enum",
             "name": "TYPE3",
             "values": [
                 "XK_Left",
@@ -140,147 +140,147 @@
             ]
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_LEFTARROW",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_RIGHTARROW",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_DOWNARROW",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_UPARROW",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_ESCAPE",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_ENTER",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_TAB",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F1",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F2",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F3",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F4",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F5",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F6",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F7",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F8",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F9",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F10",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F11",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_F12",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_BACKSPACE",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_PAUSE",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_EQUALS",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_MINUS",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_RSHIFT",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_RCTRL",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "KEY_RALT",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "X_display",
             "typename": "UNRESOLVED"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "X_event",
             "typename": "TYPE2"
         },
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "XKeycodeToKeysym",
             "return_typename": "int",
             "argument_typenames": [

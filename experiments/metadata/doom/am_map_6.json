@@ -35,42 +35,42 @@
     },
     "declarations": [
         {
-            "type": "alias",
+            "decl_type": "alias",
             "name": "fixed_t",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "min_x",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "min_y",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "MAXINT",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "max_x",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "max_y",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "numvertexes",
             "typename": "int"
         },
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE1",
             "members": [
                 {
@@ -84,37 +84,37 @@
             ]
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "vertexes",
             "typename": "TYPE1[]"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "max_w",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "max_h",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "min_w",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "min_h",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "PLAYERRADIUS",
             "typename": "int"
         },
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "FixedDiv",
             "return_typename": "int",
             "argument_typenames": [
@@ -123,27 +123,27 @@
             ]
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "f_w",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "FRACBITS",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "f_h",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "min_scale_mtof",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "max_scale_mtof",
             "typename": "int"
         }

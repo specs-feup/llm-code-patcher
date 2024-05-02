@@ -18,7 +18,7 @@
     },
     "declarations": [
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "TYPE1",
             "members": [
                 {
@@ -28,7 +28,7 @@
             ]
         },
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "player_t",
             "members": [
                 {
@@ -62,17 +62,17 @@
             ]
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "players",
             "typename": "player_t[]"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "MF_SHADOW",
             "typename": "int"
         },
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "memset",
             "return_typename": "void*",
             "argument_typenames": [

@@ -47,7 +47,7 @@ class DeclParser:
             if declaration_type == "var":
                 declarations.append(
                     {
-                        "type": "var",
+                        "decl_type": "var",
                         "name": node.name.text,
                         "typename": node.typename.text
                     }
@@ -55,7 +55,7 @@ class DeclParser:
             elif declaration_type == "func":
                 declarations.append(
                     {
-                        "type": "func",
+                        "decl_type": "func",
                         "name": node.name.text,
                         "return_typename": node.return_typename.text,
                         "argument_typenames": [typename.text for typename in node.arg_typenames]
@@ -70,7 +70,7 @@ class DeclParser:
                             "typename": child.typename.text
                         })
                 declarations.append({
-                    "type": "struct",
+                    "decl_type": "struct",
                     "name": node.name.text,
                     "members": members
                 })
@@ -78,7 +78,7 @@ class DeclParser:
             elif declaration_type == "enum":
                 declarations.append(
                     {
-                        "type": "enum",
+                        "decl_type": "enum",
                         "name": node.name.text,
                         "values": [enum_value.text for enum_value in node.enum_values]
                     }
@@ -86,7 +86,7 @@ class DeclParser:
             elif declaration_type == "alias":
                 declarations.append(
                     {
-                        "type": "alias",
+                        "decl_type": "alias",
                         "name": node.name.text,
                         "typename": node.typename.text
                     }
@@ -100,7 +100,7 @@ class DeclParser:
     def get_declarations_as_c_decls(declarations):
         c_declarations = []
 
-        var_decls = [decl for decl in declarations if decl["type"] == "var"]
+        var_decls = [decl for decl in declarations if decl["decl_type"] == "var"]
 
         for var_decl in var_decls:
             c_declarations.append(DeclParser._get_var_declaration_as_c_str(var_decl))

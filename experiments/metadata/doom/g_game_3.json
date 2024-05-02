@@ -27,14 +27,14 @@
     },
     "declarations": [
         {
-            "type": "enum",
+            "decl_type": "enum",
             "name": "TYPE1",
             "values": [
                 "PST_LIVE"
             ]
         },
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "player_t",
             "members": [
                 {
@@ -92,52 +92,52 @@
             ]
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "MAXPLAYERS",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "players",
             "typename": "player_t[]"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "true",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "MAXHEALTH",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "NUMAMMO",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "wp_pistol",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "wp_fist",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "am_clip",
             "typename": "int"
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "maxammo",
             "typename": "int[]"
         },
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "memcpy",
             "return_typename": "void*",
             "argument_typenames": [
@@ -147,7 +147,7 @@
             ]
         },
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "memset",
             "return_typename": "void*",
             "argument_typenames": [

@@ -17,17 +17,17 @@
     },
     "declarations": [
         {
-            "type": "struct",
+            "decl_type": "struct",
             "name": "player_t",
             "members": []
         },
         {
-            "type": "var",
+            "decl_type": "var",
             "name": "players",
             "typename": "player_t[]"
         },
         {
-            "type": "func",
+            "decl_type": "func",
             "name": "G_PlayerReborn",
             "return_typename": "void",
             "argument_typenames": [
