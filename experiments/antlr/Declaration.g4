@@ -10,19 +10,22 @@ ENUM: 'enum' ;
 ALIAS: 'alias' ;
 MEMBER: 'memb' ;
 
+
+ID: [a-zA-Z0-9_]+ ;
+
 // TODO make this more stricted (pointers before arrays) and allow white space between pointers and arrays
 // TODO think about pointers to arrays
-ID: [a-zA-Z0-9_]+('[]' | '*')* ;
+TYPE: ID ('[]' | '*')*;
 
 start : declaration*  ;
 // TODO think about pointers to functions
 declaration
-    : type=ALIAS name=ID ':' typename=ID
-    | type=VAR name=ID ':' typename=ID
-    | type=FUNC name=ID ':' return_typename=ID ('->' arg_typenames+=ID (',' arg_typenames+=ID)* )?
+    : type=ALIAS name=ID ':' typename=TYPE
+    | type=VAR name=ID ':' typename=TYPE
+    | type=FUNC name=ID ':' return_typename=TYPE ('->' arg_typenames+=TYPE (',' arg_typenames+=TYPE)* )?
     | type=STRUCT name=ID ':' member*
     | type=ENUM name=ID ':' enum_values+=ID (',' enum_values+=ID)*
     ;
 
 member 
-    : MEMBER name=ID ':' typename=ID ;
+    : MEMBER name=ID ':' type=TYPE ;
