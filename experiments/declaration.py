@@ -49,7 +49,7 @@ class DeclParser:
                     {
                         "decl_type": "var",
                         "name": node.name.text,
-                        "typename": node.typename.text
+                        "type": node.type.text
                     }
                 )
             elif declaration_type == "func":
@@ -57,8 +57,8 @@ class DeclParser:
                     {
                         "decl_type": "func",
                         "name": node.name.text,
-                        "return_typename": node.return_typename.text,
-                        "argument_typenames": [typename.text for typename in node.arg_typenames]
+                        "return_type": node.return_type.text,
+                        "argument_types": [type.text for type in node.arg_types]
                     }
                 )
             elif declaration_type == "struct":
@@ -67,7 +67,7 @@ class DeclParser:
                     if isinstance(child, DeclarationParser.MemberContext):
                         members.append({
                             "name": child.name.text,
-                            "typename": child.typename.text
+                            "type": child.type.text
                         })
                 declarations.append({
                     "decl_type": "struct",
@@ -88,7 +88,7 @@ class DeclParser:
                     {
                         "decl_type": "alias",
                         "name": node.name.text,
-                        "typename": node.typename.text
+                        "type": node.type.text
                     }
                 )
 
@@ -109,7 +109,7 @@ class DeclParser:
     def _get_var_declaration_as_c_decl(var_decl):
         name = var_decl["name"]
 
-        type = var_decl["typename"].replace(" ", "")
+        type = var_decl["type"].replace(" ", "")
             
         has_n_array, array_n = DeclParser._has_n_array(type)
         
@@ -132,35 +132,35 @@ class DeclParser:
         return f"{type_without_declarators} {'*'*pointer_n}{name}{f'[{ARRAY_SIZE}]'*array_n};"
     
     @staticmethod
-    def _has_n_array(typename):
-        n = typename.count("[]")
+    def _has_n_array(type):
+        n = type.count("[]")
 
         return n > 0, n
 
     
     @staticmethod
-    def _has_n_pointer(typename):
-        n = typename.count("*")
+    def _has_n_pointer(type):
+        n = type.count("*")
 
         return n > 0, n
     
     @staticmethod
-    def _get_type_without_n_array(typename):
-        occ = typename.find("[")
+    def _get_type_without_n_array(type):
+        occ = type.find("[")
 
-        return typename[:occ]
+        return type[:occ]
 
     @staticmethod
-    def _get_type_without_n_pointer(typename):
-        occ = typename.find("*")
+    def _get_type_without_n_pointer(type):
+        occ = type.find("*")
 
-        return typename[:occ]
+        return type[:occ]
 
 parser = DeclParser()
 
 var_del = {
     "name": "a",
-    "typename": "ulong"
+    "type": "ulong"
 }
 
 print(parser._get_var_declaration_as_c_decl(var_del))

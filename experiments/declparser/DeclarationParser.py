@@ -140,10 +140,9 @@ class DeclarationParser ( Parser ):
             self.parser = parser
             self.type_ = None # Token
             self.name = None # Token
-            self.typename = None # Token
-            self.return_typename = None # Token
+            self.return_type = None # Token
             self._TYPE = None # Token
-            self.arg_typenames = list() # of Tokens
+            self.arg_types = list() # of Tokens
             self._ID = None # Token
             self.enum_values = list() # of Tokens
 
@@ -213,7 +212,7 @@ class DeclarationParser ( Parser ):
                 self.state = 14
                 self.match(DeclarationParser.T__0)
                 self.state = 15
-                localctx.typename = self.match(DeclarationParser.TYPE)
+                localctx.type_ = self.match(DeclarationParser.TYPE)
                 pass
             elif token in [5]:
                 self.enterOuterAlt(localctx, 2)
@@ -224,7 +223,7 @@ class DeclarationParser ( Parser ):
                 self.state = 18
                 self.match(DeclarationParser.T__0)
                 self.state = 19
-                localctx.typename = self.match(DeclarationParser.TYPE)
+                localctx.type_ = self.match(DeclarationParser.TYPE)
                 pass
             elif token in [6]:
                 self.enterOuterAlt(localctx, 3)
@@ -235,7 +234,7 @@ class DeclarationParser ( Parser ):
                 self.state = 22
                 self.match(DeclarationParser.T__0)
                 self.state = 23
-                localctx.return_typename = self.match(DeclarationParser.TYPE)
+                localctx.return_type = self.match(DeclarationParser.TYPE)
                 self.state = 33
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
@@ -244,7 +243,7 @@ class DeclarationParser ( Parser ):
                     self.match(DeclarationParser.T__1)
                     self.state = 25
                     localctx._TYPE = self.match(DeclarationParser.TYPE)
-                    localctx.arg_typenames.append(localctx._TYPE)
+                    localctx.arg_types.append(localctx._TYPE)
                     self.state = 30
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
@@ -253,7 +252,7 @@ class DeclarationParser ( Parser ):
                         self.match(DeclarationParser.T__2)
                         self.state = 27
                         localctx._TYPE = self.match(DeclarationParser.TYPE)
-                        localctx.arg_typenames.append(localctx._TYPE)
+                        localctx.arg_types.append(localctx._TYPE)
                         self.state = 32
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
