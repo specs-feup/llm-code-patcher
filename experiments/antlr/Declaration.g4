@@ -15,7 +15,7 @@ ID: [a-zA-Z0-9_]+ ;
 
 // TODO make this more stricted (pointers before arrays) and allow white space between pointers and arrays
 // TODO think about pointers to arrays
-TYPE: ID ('[]' | '*')*;
+TYPE: ID '*'* ('[' ']')*;
 
 start : declaration*  ;
 // TODO think about pointers to functions
