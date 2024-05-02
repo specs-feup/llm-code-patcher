@@ -23,7 +23,7 @@
             "members": [
                 {
                     "name": "flags",
-                    "typename": "int"
+                    "type": "int"
                 }
             ]
         },
@@ -33,49 +33,49 @@
             "members": [
                 {
                     "name": "mo",
-                    "typename": "TYPE1*"
+                    "type": "TYPE1*"
                 },
                 {
                     "name": "extralight",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "fixedcolormap",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "damagecount",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "bonuscount",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "powers",
-                    "typename": "UNRESOLVED[]"
+                    "type": "UNRESOLVED[]"
                 },
                 {
                     "name": "cards",
-                    "typename": "UNRESOLVED[]"
+                    "type": "UNRESOLVED[]"
                 }
             ]
         },
         {
             "decl_type": "var",
             "name": "players",
-            "typename": "player_t[]"
+            "type": "player_t[]"
         },
         {
             "decl_type": "var",
             "name": "MF_SHADOW",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "func",
             "name": "memset",
-            "return_typename": "void*",
-            "argument_typenames": [
+            "return_type": "void*",
+            "argument_types": [
                 "void*",
                 "int",
                 "ulong"

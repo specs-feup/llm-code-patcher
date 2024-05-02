@@ -28,72 +28,72 @@
         {
             "decl_type": "var",
             "name": "X_display",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "grabMouse",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "doPointerWarp",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "None",
-            "typename": "UNRESOLVED"
+            "type": "UNRESOLVED"
         },
         {
             "decl_type": "var",
             "name": "X_mainWindow",
-            "typename": "UNRESOLVED"
+            "type": "UNRESOLVED"
         },
         {
             "decl_type": "var",
             "name": "X_width",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "X_height",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "POINTER_WARP_COUNTDOWN",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "mousemoved",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "false",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "func",
             "name": "XPending",
-            "return_typename": "int",
-            "argument_typenames": [
+            "return_type": "int",
+            "argument_types": [
                 "int"
             ]
         },
         {
             "decl_type": "func",
             "name": "I_GetEvent",
-            "return_typename": "void",
-            "argument_typenames": []
+            "return_type": "void",
+            "argument_types": []
         },
         {
             "decl_type": "func",
             "name": "XWarpPointer",
-            "return_typename": "int",
-            "argument_typenames": [
+            "return_type": "int",
+            "argument_types": [
                 "int",
                 "UNRESOLVED",
                 "UNRESOLVED",

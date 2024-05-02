@@ -16,7 +16,7 @@
         {
             "decl_type": "var",
             "name": "markpointnum",
-            "typename": "int"
+            "type": "int"
         },
 
         {
@@ -24,11 +24,11 @@
             "name": "TYPE1",
             "members": [
                 {
-                    "typename": "int",
+                    "type": "int",
                     "name": "x"
                 },
                 {
-                    "typename": "int",
+                    "type": "int",
                     "name": "y"
                 }
             ] 

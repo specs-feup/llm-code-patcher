@@ -24,13 +24,13 @@
         {
             "decl_type": "var",
             "name": "players",
-            "typename": "player_t[]"
+            "type": "player_t[]"
         },
         {
             "decl_type": "func",
             "name": "G_PlayerReborn",
-            "return_typename": "void",
-            "argument_typenames": [
+            "return_type": "void",
+            "argument_types": [
                 "int"
             ]
         }

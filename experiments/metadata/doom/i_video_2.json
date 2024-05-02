@@ -26,11 +26,11 @@
             "members": [
                 {
                     "name": "shmaddr",
-                    "typename": "UNRESOLVED"
+                    "type": "UNRESOLVED"
                 },
                 {
                     "name": "shmid",
-                    "typename": "UNRESOLVED"
+                    "type": "UNRESOLVED"
                 }
             ]
         },
@@ -40,35 +40,35 @@
             "members": [
                 {
                     "name": "data",
-                    "typename": "void*"
+                    "type": "void*"
                 }
             ]
         },
         {
             "decl_type": "var",
             "name": "X_display",
-            "typename": "UNRESOLVED"
+            "type": "UNRESOLVED"
         },
         {
             "decl_type": "var",
             "name": "X_shminfo",
-            "typename": "TYPE1"
+            "type": "TYPE1"
         },
         {
             "decl_type": "var",
             "name": "IPC_RMID",
-            "typename": "UNRESOLVED"
+            "type": "UNRESOLVED"
         },
         {
             "decl_type": "var",
             "name": "image",
-            "typename": "TYPE2*"
+            "type": "TYPE2*"
         },
         {
             "decl_type": "func",
             "name": "XShmDetach",
-            "return_typename": "int",
-            "argument_typenames": [
+            "return_type": "int",
+            "argument_types": [
                 "UNRESOLVED",
                 "TYPE1*"
             ]
@@ -76,24 +76,24 @@
         {
             "decl_type": "func",
             "name": "I_Error",
-            "return_typename": "void",
-            "argument_typenames": [
+            "return_type": "void",
+            "argument_types": [
                 "char*"
             ]
         },
         {
             "decl_type": "func",
             "name": "shmdt",
-            "return_typename": "void",
-            "argument_typenames": [
+            "return_type": "void",
+            "argument_types": [
                 "UNRESOLVED"
             ]
         },
         {
             "decl_type": "func",
             "name": "shmctl",
-            "return_typename": "void",
-            "argument_typenames": [
+            "return_type": "void",
+            "argument_types": [
                 "UNRESOLVED",
                 "UNRESOLVED",
                 "UNRESOLVED"

@@ -83,7 +83,7 @@
             "members": [
                 {
                     "name": "keycode",
-                    "typename": "UNRESOLVED"
+                    "type": "UNRESOLVED"
                 }
             ]
         },
@@ -93,7 +93,7 @@
             "members": [
                 {
                     "name": "xkey",
-                    "typename": "TYPE1"
+                    "type": "TYPE1"
                 }
             ]
         },
@@ -142,148 +142,148 @@
         {
             "decl_type": "var",
             "name": "KEY_LEFTARROW",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_RIGHTARROW",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_DOWNARROW",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_UPARROW",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_ESCAPE",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_ENTER",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_TAB",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F1",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F2",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F3",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F4",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F5",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F6",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F7",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F8",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F9",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F10",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F11",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_F12",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_BACKSPACE",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_PAUSE",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_EQUALS",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_MINUS",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_RSHIFT",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_RCTRL",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "KEY_RALT",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "X_display",
-            "typename": "UNRESOLVED"
+            "type": "UNRESOLVED"
         },
         {
             "decl_type": "var",
             "name": "X_event",
-            "typename": "TYPE2"
+            "type": "TYPE2"
         },
         {
             "decl_type": "func",
             "name": "XKeycodeToKeysym",
-            "return_typename": "int",
-            "argument_typenames": [
+            "return_type": "int",
+            "argument_types": [
                 "UNRESOLVED",
                 "int",
                 "int"

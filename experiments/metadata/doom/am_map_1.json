@@ -24,11 +24,11 @@
             "name": "TYPE1",
             "members": [
                 {
-                    "typename": "int",
+                    "type": "int",
                     "name": "x"
                 },
                 {
-                    "typename": "int",
+                    "type": "int",
                     "name": "y" 
                 }
             ]
@@ -39,11 +39,11 @@
             "name": "TYPE2",
             "members": [
                 {
-                    "typename": "int",
+                    "type": "int",
                     "name": "x"
                 },
                 {
-                    "typename": "int",
+                    "type": "int",
                     "name": "y" 
                 }
             ]
@@ -54,11 +54,11 @@
             "name": "mline_t",
             "members": [
                 {
-                    "typename": "TYPE1",
+                    "type": "TYPE1",
                     "name": "a"
                 },
                 {
-                    "typename": "TYPE2",
+                    "type": "TYPE2",
                     "name": "b"
                 }
             ]
@@ -69,11 +69,11 @@
             "name": "islope_t",
             "members": [
                 {
-                    "typename": "int",
+                    "type": "int",
                     "name": "slp"
                 },
                 {
-                    "typename": "int",
+                    "type": "int",
                     "name": "islp"
                 }
             ] 
@@ -82,14 +82,14 @@
         {
             "decl_type": "var",
             "name": "MAXINT",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "func",
             "name": "FixedDiv",
-            "return_typename": "int",
-            "argument_typenames": [
+            "return_type": "int",
+            "argument_types": [
                 "int",
                 "int"
             ]

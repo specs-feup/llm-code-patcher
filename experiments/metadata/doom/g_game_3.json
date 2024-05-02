@@ -39,108 +39,108 @@
             "members": [
                 {
                     "name": "frags",
-                    "typename": "int[]"
+                    "type": "int[]"
                 },
                 {
                     "name": "killcount",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "itemcount",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "secretcount",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "usedown",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "playerstate",
-                    "typename": "TYPE1"
+                    "type": "TYPE1"
                 },
                 {
                     "name": "attackdown",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "health",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "readyweapon",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "pendingweapon",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "name": "weaponowned",
-                    "typename": "int[]"
+                    "type": "int[]"
                 },
                 {
                     "name": "ammo",
-                    "typename": "int[]"
+                    "type": "int[]"
                 },
                 {
                     "name": "maxammo",
-                    "typename": "int[]"
+                    "type": "int[]"
                 }
             ]
         },
         {
             "decl_type": "var",
             "name": "MAXPLAYERS",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "players",
-            "typename": "player_t[]"
+            "type": "player_t[]"
         },
         {
             "decl_type": "var",
             "name": "true",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "MAXHEALTH",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "NUMAMMO",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "wp_pistol",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "wp_fist",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "am_clip",
-            "typename": "int"
+            "type": "int"
         },
         {
             "decl_type": "var",
             "name": "maxammo",
-            "typename": "int[]"
+            "type": "int[]"
         },
         {
             "decl_type": "func",
             "name": "memcpy",
-            "return_typename": "void*",
-            "argument_typenames": [
+            "return_type": "void*",
+            "argument_types": [
                 "void*",
                 "void*",
                 "ulong"
@@ -149,8 +149,8 @@
         {
             "decl_type": "func",
             "name": "memset",
-            "return_typename": "void*",
-            "argument_typenames": [
+            "return_type": "void*",
+            "argument_types": [
                 "void*",
                 "int",
                 "ulong"

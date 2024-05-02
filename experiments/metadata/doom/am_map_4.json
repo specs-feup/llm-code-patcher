@@ -21,55 +21,55 @@
         {
             "decl_type": "var",
             "name": "m_w",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "old_m_w",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "m_h",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "old_m_h",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "followplayer",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "m_x",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "old_m_x",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "m_y",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "old_m_y",
-            "typename": "int"
+            "type": "int"
         },
 
         {
@@ -79,12 +79,12 @@
                 {
                     "decl_type": "memb",
                     "name": "x",
-                    "typename": "int"
+                    "type": "int"
                 },
                 {
                     "decl_type": "memb",
                     "name": "y",
-                    "typename": "int"
+                    "type": "int"
                 }
             ]
         },
@@ -96,7 +96,7 @@
                 {
                     "decl_type": "memb",
                     "name": "mo",
-                    "typename": "TYPE1*"
+                    "type": "TYPE1*"
                 }
             ]
         },
@@ -104,56 +104,56 @@
         {
             "decl_type": "var",
             "name": "plr",
-            "typename": "TYPE2*"
+            "type": "TYPE2*"
         },
 
         {
             "decl_type": "var",
             "name": "m_x2",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "m_y2",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "scale_mtof",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "scale_ftom",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "f_w",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "FRACBITS",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "var",
             "name": "FRACUNIT",
-            "typename": "int"
+            "type": "int"
         },
 
         {
             "decl_type": "func",
             "name": "FixedDiv",
-            "return_typename": "int",
-            "argument_typenames": [
+            "return_type": "int",
+            "argument_types": [
                 "int", "int"
             ]
         }
