@@ -1,0 +1,14 @@
+{
+    "experiment": "i_video_3",
+    "project": "DOOM",
+    "org": "id-Software",
+    "created_unix": 1710378939,
+    "created_iso": "2024-03-14T01:15:39Z",
+    "prompt": "prompt_c.md",
+    "model": "gpt-4-0613",
+    "prompt_tokens": 755,
+    "answer_tokens": 152,
+    "total_tokens": 907,
+    "answer_gen_time": 5.143564701080322,
+    "llm_answer": "1. var false : int\n2. var X_width : int\n3. var X_display : UNRESOLVED*\n4. var mousemoved : int\n5. var None : UNRESOLVED\n6. var POINTER_WARP_COUNTDOWN : int\n7. var X_mainWindow : UNRESOLVED\n8. var grabMouse : int\n9. var X_height : int\n10. var doPointerWarp : int\n11. func XPending : int -> UNRESOLVED*\n12. func XWarpPointer : void -> UNRESOLVED*, UNRESOLVED, UNRESOLVED, int, int, int, int, int, int\n13. func I_GetEvent : void ->"
+}

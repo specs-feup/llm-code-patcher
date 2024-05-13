@@ -1,0 +1,14 @@
+{
+    "experiment": "i_video_2",
+    "project": "DOOM",
+    "org": "id-Software",
+    "created_unix": 1710378934,
+    "created_iso": "2024-03-14T01:15:34Z",
+    "prompt": "prompt_c.md",
+    "model": "gpt-4-0613",
+    "prompt_tokens": 678,
+    "answer_tokens": 118,
+    "total_tokens": 796,
+    "answer_gen_time": 4.8445985317230225,
+    "llm_answer": "1. var IPC_RMID : int\n2. var X_display : UNRESOLVED*\n3. struct X_shminfo :\n    memb shmaddr : UNRESOLVED*\n    memb shmid : int\n4. struct image :\n    memb data : UNRESOLVED*\n5. func I_Error : void -> char*\n6. func shmctl : int -> int, int, void*\n7. func shmdt : int -> UNRESOLVED*\n8. func XShmDetach : int -> UNRESOLVED*, struct X_shminfo*"
+}

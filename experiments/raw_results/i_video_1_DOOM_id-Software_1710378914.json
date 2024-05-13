@@ -1,0 +1,14 @@
+{
+    "experiment": "i_video_1",
+    "project": "DOOM",
+    "org": "id-Software",
+    "created_unix": 1710378914,
+    "created_iso": "2024-03-14T01:15:14Z",
+    "prompt": "prompt_c.md",
+    "model": "gpt-4-0613",
+    "prompt_tokens": 1442,
+    "answer_tokens": 620,
+    "total_tokens": 2062,
+    "answer_gen_time": 20.196056842803955,
+    "llm_answer": "1. var KEY_RIGHTARROW : int\n2. var KEY_DOWNARROW : int\n3. var KEY_ENTER : int\n4. var XK_F1 : int\n5. var KEY_LEFTARROW : int\n6. var KEY_F2 : int\n7. var XK_Tab : int\n8. var XK_Meta_L : int\n9. var KEY_F4 : int\n10. var XK_F7 : int\n11. var KEY_F7 : int\n12. var XK_Alt_R : int\n13. var KEY_PAUSE : int\n14. var KEY_RCTRL : int\n15. var KEY_F5 : int\n16. var XK_equal : int\n17. var XK_Control_L : int\n18. var XK_Alt_L : int\n19. var XK_Left : int\n20. var KEY_EQUALS : int\n21. var XK_F9 : int\n22. var XK_Pause : int\n23. var XK_KP_Subtract : int\n24. var KEY_F8 : int\n25. var XK_Shift_R : int\n26. var XK_Control_R : int\n27. var XK_F6 : int\n28. var KEY_TAB : int\n29. var XK_Right : int\n30. var XK_BackSpace : int\n31. var XK_Meta_R : int\n32. var XK_Escape : int\n33. var KEY_RSHIFT : int\n34. var XK_asciitilde : int\n35. var XK_F2 : int\n36. var XK_Down : int\n37. var XK_F5 : int\n38. var XK_F4 : int\n39. var XK_F3 : int\n40. var KEY_F10 : int\n41. var KEY_F1 : int\n42. var XK_space : int\n43. var XK_Return : int\n44. struct X_event :\n    memb xkey : TYPE1\n45. var XK_F8 : int\n46. var XK_F11 : int\n47. var KEY_RALT : int\n48. var KEY_BACKSPACE : int\n49. var KEY_F3 : int\n50. var KEY_MINUS : int\n51. var KEY_F9 : int\n52. var KEY_ESCAPE : int\n53. var X_display : TYPE2*\n54. var KEY_F6 : int\n55. var XK_F10 : int\n56. var XK_F12 : int\n57. var XK_Shift_L : int\n58. var XK_minus : int\n59. var KEY_F11 : int\n60. var XK_KP_Equal : int\n61. var XK_Up : int\n62. var KEY_UPARROW : int\n63. var KEY_F12 : int\n64. var XK_Delete : int\n65. func XKeycodeToKeysym : int -> TYPE2*, int, int\n66. struct TYPE1 :\n    memb keycode : int\n67. typedef TYPE2 : UNRESOLVED\n"
+}

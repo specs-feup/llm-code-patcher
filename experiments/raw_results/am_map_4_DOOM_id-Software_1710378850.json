@@ -1,0 +1,14 @@
+{
+    "experiment": "am_map_4",
+    "project": "DOOM",
+    "org": "id-Software",
+    "created_unix": 1710378850,
+    "created_iso": "2024-03-14T01:14:10Z",
+    "prompt": "prompt_c.md",
+    "model": "gpt-4-0613",
+    "prompt_tokens": 778,
+    "answer_tokens": 240,
+    "total_tokens": 1018,
+    "answer_gen_time": 8.288560152053833,
+    "llm_answer": "1. var m_w : UNRESOLVED\n2. var old_m_w : UNRESOLVED\n3. var m_h : UNRESOLVED\n4. var old_m_h : UNRESOLVED\n5. var followplayer : int\n6. var m_x : UNRESOLVED\n7. var old_m_x : UNRESOLVED\n8. var m_y : UNRESOLVED\n9. var old_m_y : UNRESOLVED\n10. struct plr : \n    memb mo : TYPE1*\n11. var m_x2 : UNRESOLVED\n12. var m_y2 : UNRESOLVED\n13. var scale_mtof : UNRESOLVED\n14. var f_w : UNRESOLVED\n15. var FRACBITS : int\n16. var scale_ftom : UNRESOLVED\n17. var FRACUNIT : UNRESOLVED\n18. func FixedDiv : UNRESOLVED -> UNRESOLVED , UNRESOLVED\n19. struct TYPE1 : \n    memb x : UNRESOLVED\n    memb y : UNRESOLVED"
+}

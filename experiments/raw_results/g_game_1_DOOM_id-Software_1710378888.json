@@ -1,0 +1,14 @@
+{
+    "experiment": "g_game_1",
+    "project": "DOOM",
+    "org": "id-Software",
+    "created_unix": 1710378888,
+    "created_iso": "2024-03-14T01:14:48Z",
+    "prompt": "prompt_c.md",
+    "model": "gpt-4-0613",
+    "prompt_tokens": 612,
+    "answer_tokens": 33,
+    "total_tokens": 645,
+    "answer_gen_time": 1.4781146049499512,
+    "llm_answer": "1. struct player_t :\n2. var p : player_t*\n3. var players : player_t[]\n4. func G_PlayerReborn : void -> int"
+}

@@ -1,0 +1,14 @@
+{
+    "experiment": "g_game_2",
+    "project": "DOOM",
+    "org": "id-Software",
+    "created_unix": 1710378896,
+    "created_iso": "2024-03-14T01:14:56Z",
+    "prompt": "prompt_c.md",
+    "model": "gpt-4-0613",
+    "prompt_tokens": 706,
+    "answer_tokens": 103,
+    "total_tokens": 809,
+    "answer_gen_time": 4.45432710647583,
+    "llm_answer": "1. var players : player_t[]\n2. var p : player_t*\n3. var MF_SHADOW : int\n4. struct player_t :\n      memb powers : int[]\n      memb cards : int[]\n      memb mo : TYPE1*\n      memb extralight : int\n      memb fixedcolormap : int\n      memb damagecount : int\n      memb bonuscount : int\n5. struct TYPE1 :\n      memb flags : int\n6. func memset : void -> void*, int, long"
+}

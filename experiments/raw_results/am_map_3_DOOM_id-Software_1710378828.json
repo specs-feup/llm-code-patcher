@@ -1,0 +1,14 @@
+{
+    "experiment": "am_map_3",
+    "project": "DOOM",
+    "org": "id-Software",
+    "created_unix": 1710378828,
+    "created_iso": "2024-03-14T01:13:48Z",
+    "prompt": "prompt_c.md",
+    "model": "gpt-4-0613",
+    "prompt_tokens": 614,
+    "answer_tokens": 91,
+    "total_tokens": 705,
+    "answer_gen_time": 4.243727445602417,
+    "llm_answer": "1. var old_m_x : UNRESOLVED\n2. var m_x : UNRESOLVED\n3. var old_m_y : UNRESOLVED\n4. var m_y : UNRESOLVED\n5. var old_m_w : UNRESOLVED\n6. var m_w : UNRESOLVED\n7. var old_m_h : UNRESOLVED\n8. var m_h : UNRESOLVED"
+}

@@ -1,0 +1,14 @@
+{
+    "experiment": "am_map_5",
+    "project": "DOOM",
+    "org": "id-Software",
+    "created_unix": 1710378865,
+    "created_iso": "2024-03-14T01:14:25Z",
+    "prompt": "prompt_c.md",
+    "model": "gpt-4-0613",
+    "prompt_tokens": 630,
+    "answer_tokens": 77,
+    "total_tokens": 707,
+    "answer_gen_time": 3.098442316055298,
+    "llm_answer": "1. var markpoints : TYPE1[]\n2. var markpointnum : int\n3. var m_x : int\n4. var m_w : int\n5. var m_y : int\n6. var m_h : int\n7. var AM_NUMMARKPOINTS : int\n8. struct TYPE1 :\n     memb x : int\n     memb y : int"
+}
