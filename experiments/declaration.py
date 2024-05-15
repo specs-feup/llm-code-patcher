@@ -2,7 +2,6 @@ from antlr4 import *
 from declparser.DeclarationLexer import DeclarationLexer
 from declparser.DeclarationParser import DeclarationParser
 
-
 UNRESOLVED = ["UNRESOLVED", "Unresolved", "unresolved"] # give some leeway to the LLM for case sensitivity
 
 DEFAULT_FOR_UNRESOLVED = "int"
@@ -100,37 +99,126 @@ class DeclParser:
     def get_declarations_as_c_decls(declarations):
         c_declarations = []
 
+        struct_decls = [decl for decl in declarations if decl["decl_type"] == "struct"]
+        enum_decls = [decl for decl in declarations if decl["decl_type"] == "enum"]
+        alias_decls = [decl for decl in declarations if decl["decl_type"] == "alias"]
+        function_decls = [decl for decl in declarations if decl["decl_type"] == "func"]
         var_decls = [decl for decl in declarations if decl["decl_type"] == "var"]
 
+        c_declarations += DeclParser.get_struct_and_enum_decl_as_c_decls(struct_decls, enum_decls)
+
+        for struct_decl in struct_decls:
+            c_declarations.append(DeclParser.get_struct_decl_as_c_def(struct_decl))
+    
+        for enum_decl in enum_decls:
+            c_declarations.append(DeclParser.get_enum_decl_as_c_def(enum_decl))
+
+        for function_decl in function_decls:
+            c_declarations.append(DeclParser._get_func_decl_as_c_decl(function_decl))
+
         for var_decl in var_decls:
-            c_declarations.append(DeclParser._get_var_declaration_as_c_str(var_decl))
+            c_declarations.append(DeclParser._get_var_decl_as_c_decl(var_decl))
+
+    # these are just forward declarations for those structs and enums to solve cyclic dependencies
+    @staticmethod
+    def get_struct_and_enum_decl_as_c_decls(struct_decls, enum_decls):
+        c_declarations = []
+        
+        for struct_decl in struct_decls:
+            struct_name = struct_decl["name"]
+            c_declarations.append(f"struct {struct_name};")
+        
+        for enum_decl in enum_decls:
+            enum_name = enum_decl["name"]
+            c_declarations.append(f"enum {enum_name};")
+        
+        return c_declarations
+    
+    @staticmethod
+    def get_struct_decl_as_c_def(struct_decl):
+        struct_name = struct_decl["name"]
+        struct_members = struct_decl["members"]
+
+        # typedef struct <struct_name> {...} <struct_name>; in order to take into account cases where "struct <struct_name>" is used in the code
+        c_def = f"typedef struct {struct_name} {{\n"
+
+        for member in struct_members:
+            c_def += f"\t{DeclParser._get_var_decl_as_c_decl(member)}\n"
+
+        c_def += f"}} {struct_name};"
+
+        return c_def
 
     @staticmethod
-    def _get_var_declaration_as_c_decl(var_decl):
-        name = var_decl["name"]
+    def get_enum_decl_as_c_def(enum_decl):
+        enum_name = enum_decl["name"]
+        enum_values = enum_decl["values"]
 
-        type = var_decl["type"].replace(" ", "")
-            
-        has_n_array, array_n = DeclParser._has_n_array(type)
+        c_def = f"enum {enum_name} {{\n"
+
+        for enum_value in enum_values:
+            c_def += f"\t{enum_value},\n"
+
+        c_def += f"}} {enum_name};"
+
+        return c_def
+    
+    @staticmethod
+    def _get_func_decl_as_c_decl(func_decl):
+        name = func_decl["name"]
+        return_type = DeclParser.func_decl["return_type"]
+        arg_types = func_decl["argument_types"]
+
+        type_specifier, pointer_n, _ = DeclParser._get_type_components(return_type)
+
+        return_type_str = f"{type_specifier} {'*'*pointer_n}"
+
+        c_decl = f"{return_type_str} {name}("
+
+        for i, arg_type in enumerate(arg_types):
+            type_specifier, pointer_n, array_n = DeclParser._get_type_components(arg_type)
+            c_decl += f"{type_specifier} {'*'*pointer_n}arg{i}{f'[{ARRAY_SIZE}]'*array_n};"
+
+        if len(arg_types) > 0:
+            c_decl = c_decl[:-2]
+
+        c_decl += ");"
+
+        return c_decl
+
+    @staticmethod
+    def _get_var_decl_as_c_decl(var_decl):
+        name = var_decl["name"]
+        type = var_decl["type"]
+
+        type_specifier, pointer_n, array_n = DeclParser._get_type_components(type)
         
-        type_without_declarators = type
+        return f"{type_specifier} {'*'*pointer_n}{name}{f'[{ARRAY_SIZE}]'*array_n};"
+    
+    @staticmethod
+    def _get_type_components(type):
+        type2 = type.replace(" ", "")
+            
+        has_n_array, array_n = DeclParser._has_n_array(type2)
+        
+        type_specifier = type2
 
         if has_n_array:
-            type_without_declarators = DeclParser._get_type_without_n_array(type_without_declarators)
+            type_specifier = DeclParser._get_type_without_n_array(type_specifier)
 
-        has_n_pointer, pointer_n = DeclParser._has_n_pointer(type_without_declarators)
+        has_n_pointer, pointer_n = DeclParser._has_n_pointer(type_specifier)
 
         if has_n_pointer:
-            type_without_declarators = DeclParser._get_type_without_n_pointer(type_without_declarators)
+            type_specifier = DeclParser._get_type_without_n_pointer(type_specifier)
 
-        if type_without_declarators in UNRESOLVED:
-            type_without_declarators = DEFAULT_FOR_UNRESOLVED
-        elif type_without_declarators in PROMPT_PRIMITIVE_TYPE_TO_C_TYPE:
-            type_without_declarators = PROMPT_PRIMITIVE_TYPE_TO_C_TYPE[type_without_declarators]
-        
+        if type_specifier in UNRESOLVED:
+            type_specifier = DEFAULT_FOR_UNRESOLVED
+        elif type_specifier in PROMPT_PRIMITIVE_TYPE_TO_C_TYPE:
+            type_specifier = PROMPT_PRIMITIVE_TYPE_TO_C_TYPE[type_specifier]
 
-        return f"{type_without_declarators} {'*'*pointer_n}{name}{f'[{ARRAY_SIZE}]'*array_n};"
-    
+
+        return type_specifier, pointer_n, array_n
+
     @staticmethod
     def _has_n_array(type):
         n = type.count("[]")
@@ -163,4 +251,3 @@ var_del = {
     "type": "ulong"
 }
 
-print(parser._get_var_declaration_as_c_decl(var_del))
