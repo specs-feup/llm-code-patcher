@@ -1,0 +1,113 @@
+{
+    "name": "ngx_http_1",
+    "snippet": "ngx_http_1",
+    "commit_hash": "0a3c79614521d7612b63eff4e09c25ed219fb65b",
+    "function_name": "ngx_http_init_phases",
+    "function_path": "/http/ngx_http.c",
+    "language": "c",
+    "errors": {
+        "unknown_type_name": [
+            "ngx_http_core_main_conf_t",
+            "ngx_int_t",
+            "ngx_conf_t"
+        ],
+        "use_undeclared_identifier": [
+            "NGX_HTTP_PRECONTENT_PHASE",
+            "NGX_HTTP_POST_READ_PHASE",
+            "NGX_HTTP_SERVER_REWRITE_PHASE",
+            "NGX_HTTP_LOG_PHASE",
+            "NGX_OK",
+            "NGX_HTTP_CONTENT_PHASE",
+            "NGX_HTTP_REWRITE_PHASE",
+            "NGX_HTTP_ACCESS_PHASE",
+            "ngx_http_handler_pt",
+            "NGX_ERROR",
+            "NGX_HTTP_PREACCESS_PHASE"
+        ],
+        "call_undeclared_function": [
+            "ngx_array_init"
+        ]
+    },
+    "declarations": [
+        {
+            "decl_type": "alias",
+            "name": "ngx_int_t",
+            "type": "long"
+        },
+        {
+            "decl_type": "struct",
+            "name": "ngx_http_handler_pt",
+            "members": []
+        },
+        {
+            "decl_type": "struct",
+            "name": "TYPE1",
+            "members": [
+                {
+                    "name": "handlers",
+                    "type": "ngx_http_handler_pt*"
+                }
+            ]
+        },
+        {
+            "decl_type": "struct",
+            "name": "ngx_http_core_main_conf_t",
+            "members": [
+                {
+                    "name": "phases",
+                    "type": "TYPE1*"
+                }
+            ]
+        },
+        {
+            "decl_type": "struct",
+            "name": "TYPE2",
+            "members": []
+        },
+        {
+            "decl_type": "struct",
+            "name": "ngx_conf_t",
+            "members": [
+                {
+                    "name": "pool",
+                    "type": "TYPE2*"
+                }
+            ]
+        },
+        {
+            "decl_type": "enum",
+            "name": "TYPE3",
+            "values": [
+                "NGX_HTTP_POST_READ_PHASE",
+                "NGX_HTTP_SERVER_REWRITE_PHAS",
+                "NGX_HTTP_REWRITE_PHASE",
+                "NGX_HTTP_PREACCESS_PHASE",
+                "NGX_HTTP_ACCESS_PHASE",
+                "NGX_HTTP_PRECONTENT_PHASE",
+                "NGX_HTTP_CONTENT_PHASE",
+                "NGX_HTTP_LOG_PHASE"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_array_init",
+            "return_type": "ngx_int_t",
+            "argument_types": [
+                "ngx_http_handler_pt**",
+                "TYPE2*",
+                "int",
+                "ulong"
+            ]
+        },
+        {
+            "decl_type": "var",
+            "name": "NGX_OK",
+            "type": "ngx_int_t"
+        },
+        {
+            "decl_type": "var",
+            "name": "NGX_ERROR",
+            "type": "ngx_int_t"
+        }
+    ]
+}

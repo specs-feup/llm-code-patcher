@@ -1,0 +1,189 @@
+{
+    "name": "ngx_crypt_2",
+    "snippet": "ngx_crypt_2",
+    "commit_hash": "ab8504b937cdbae734fb2d971fba4eea0b157f43",
+    "function_name": "ngx_crypt_ssha",
+    "function_path": "/core/ngx_crypt.c",
+    "language": "c",
+    "errors": {
+        "unknown_type_name": [
+            "u_char",
+            "ngx_pool_t",
+            "ngx_int_t"
+        ],
+        "use_undeclared_identifier": [
+            "ngx_str_t",
+            "encoded",
+            "size_t",
+            "rc",
+            "len",
+            "NGX_OK",
+            "sha1",
+            "decoded",
+            "ngx_int_t",
+            "ngx_sha1_t",
+            "NGX_ERROR"
+        ],
+        "call_undeclared_function": [
+            "ngx_strlen",
+            "ngx_base64_decoded_length",
+            "ngx_encode_base64",
+            "ngx_sha1_init",
+            "ngx_cpymem",
+            "ngx_pnalloc",
+            "ngx_max",
+            "ngx_sha1_update",
+            "ngx_decode_base64",
+            "ngx_base64_encoded_length",
+            "ngx_sha1_final"
+        ]
+    },
+    "declarations": [
+        {
+            "decl_type": "alias",
+            "name": "ngx_int_t",
+            "type": "long"
+        },
+        {
+            "decl_type": "struct",
+            "name": "ngx_pool_t",
+            "members": []
+        },
+        {
+            "decl_type": "alias",
+            "name": "u_char",
+            "type": "uchar"
+        },
+        {
+            "decl_type": "alias",
+            "name": "size_t",
+            "type": "ulong"
+        },
+        {
+            "decl_type": "struct",
+            "name": "ngx_str_t",
+            "members": [
+                {
+                    "name": "data",
+                    "type": "u_char*"
+                },
+                {
+                    "name": "len",
+                    "type": "size_t"
+                }
+            ]
+        },
+        {
+            "decl_type": "struct",
+            "name": "ngx_sha1_t",
+            "members": []
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_strlen",
+            "return_type": "size_t",
+            "argument_types": [
+                "u_char*"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_pnalloc",
+            "return_type": "u_char*",
+            "argument_types": [
+                "ngx_pool_t*",
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_base64_decoded_length",
+            "return_type": "size_t",
+            "argument_types": [
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_max",
+            "return_type": "size_t",
+            "argument_types": [
+                "size_t",
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "var",
+            "name": "NGX_ERROR",
+            "type": "ngx_int_t"
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_decode_base64",
+            "return_type": "ngx_int_t",
+            "argument_types": [
+                "ngx_str_t*",
+                "ngx_str_t*"
+            ]
+        },
+        {
+            "decl_type": "var",
+            "name": "NGX_OK",
+            "type": "ngx_int_t"
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_sha1_init",
+            "return_type": "void",
+            "argument_types": [
+                "ngx_sha1_t*"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_sha1_update",
+            "return_type": "void",
+            "argument_types": [
+                "ngx_sha1_t*",
+                "u_char*",
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_sha1_final",
+            "return_type": "void",
+            "argument_types": [
+                "u_char*",
+                "ngx_sha1_t*"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_base64_encoded_length",
+            "return_type": "size_t",
+            "argument_types": [
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_cpymem",
+            "return_type": "u_char*",
+            "argument_types": [
+                "u_char*",
+                "char*",
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_encode_base64",
+            "return_type": "void",
+            "argument_types": [
+                "ngx_str_t*",
+                "ngx_str_t*"
+            ]
+        }
+    ]
+}

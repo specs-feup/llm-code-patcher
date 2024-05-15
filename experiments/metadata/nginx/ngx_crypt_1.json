@@ -1,0 +1,97 @@
+{
+    "name": "ngx_crypt_1",
+    "snippet": "ngx_crypt_1",
+    "commit_hash": "ab8504b937cdbae734fb2d971fba4eea0b157f43",
+    "function_name": "ngx_crypt_plain",
+    "function_path": "/core/ngx_crypt.c",
+    "language": "c",
+    "errors": {
+        "unknown_type_name": [
+            "ngx_pool_t",
+            "ngx_int_t",
+            "u_char"
+        ],
+        "use_undeclared_identifier": [
+            "len",
+            "size_t",
+            "NGX_ERROR",
+            "NGX_OK",
+            "u_char"
+        ],
+        "call_undeclared_function": [
+            "ngx_strlen",
+            "ngx_memcpy",
+            "ngx_cpymem",
+            "ngx_pnalloc"
+        ]
+    },
+    "declarations": [
+        {
+            "decl_type": "alias",
+            "name": "ngx_int_t",
+            "type": "long"
+        },
+        {
+            "decl_type": "struct",
+            "name": "ngx_pool_t",
+            "members": []
+        },
+        {
+            "decl_type": "alias",
+            "name": "u_char",
+            "type": "uchar"
+        },
+        {
+            "decl_type": "alias",
+            "name": "size_t",
+            "type": "ulong"
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_strlen",
+            "return_type": "size_t",
+            "argument_types": [
+                "u_char*"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_pnalloc",
+            "return_type": "u_char*",
+            "argument_types": [
+                "ngx_pool_t*",
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "var",
+            "name": "NGX_ERROR",
+            "type": "ngx_int_t"
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_cpymem",
+            "return_type": "u_char*",
+            "argument_types": [
+                "u_char*",
+                "char*",
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "func",
+            "name": "ngx_memcpy",
+            "return_type": "void",
+            "argument_types": [
+                "u_char*",
+                "u_char*",
+                "size_t"
+            ]
+        },
+        {
+            "decl_type": "var",
+            "name": "NGX_OK",
+            "type": "ngx_int_t"
+        }
+    ]
+}
