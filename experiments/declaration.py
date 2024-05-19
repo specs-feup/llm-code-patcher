@@ -95,6 +95,7 @@ class DeclParser:
 
         return declarations
 
+class DeclConverter:
     @staticmethod
     def get_declarations_as_c_decls(declarations):
         c_declarations = []
@@ -105,79 +106,83 @@ class DeclParser:
         function_decls = [decl for decl in declarations if decl["decl_type"] == "func"]
         var_decls = [decl for decl in declarations if decl["decl_type"] == "var"]
 
-        c_declarations += DeclParser.get_struct_and_enum_decl_as_c_decls(struct_decls, enum_decls)
+        c_declarations += DeclConverter._get_struct_and_enum_decl_as_c_decls(struct_decls, enum_decls)
+        c_declarations += map(DeclConverter._get_alias_as_c_decl, alias_decls)
+        c_declarations += map(DeclConverter._get_struct_decl_as_c_def, struct_decls)
+        c_declarations += map(DeclConverter._get_enum_decl_as_c_def, enum_decls)
+        c_declarations += map(DeclConverter._get_func_decl_as_c_decl, function_decls)
+        c_declarations += map(DeclConverter._get_var_decl_as_c_decl, var_decls)
 
-        for struct_decl in struct_decls:
-            c_declarations.append(DeclParser.get_struct_decl_as_c_def(struct_decl))
+        #for c_decl in c_declarations:
+        #    print(c_decl)
+        #    print()
+
+        return c_declarations
     
-        for enum_decl in enum_decls:
-            c_declarations.append(DeclParser.get_enum_decl_as_c_def(enum_decl))
-
-        for function_decl in function_decls:
-            c_declarations.append(DeclParser._get_func_decl_as_c_decl(function_decl))
-
-        for var_decl in var_decls:
-            c_declarations.append(DeclParser._get_var_decl_as_c_decl(var_decl))
-
-    # these are just forward declarations for those structs and enums to solve cyclic dependencies
+    # We do forward declarations for the structs and enums in order
+    #   to remove the need to perform dependency checking between
+    #   structs, enums and aliases (and solve their cyclic dependencies)
+    # Also, note that "struct <struct_name>" and "<struct_name>" can both referred in the code
+    #   but the LLM cant use struct <struct_name> as a type name. As such, we typedef it to <struct_name>
     @staticmethod
-    def get_struct_and_enum_decl_as_c_decls(struct_decls, enum_decls):
+    def _get_struct_and_enum_decl_as_c_decls(struct_decls, enum_decls):
         c_declarations = []
         
         for struct_decl in struct_decls:
             struct_name = struct_decl["name"]
             c_declarations.append(f"struct {struct_name};")
+            c_declarations.append(f"typedef struct {struct_name} {struct_name};")
         
         for enum_decl in enum_decls:
             enum_name = enum_decl["name"]
             c_declarations.append(f"enum {enum_name};")
+            c_declarations.append(f"typedef enum {enum_name} {enum_name};")
         
         return c_declarations
     
     @staticmethod
-    def get_struct_decl_as_c_def(struct_decl):
+    def _get_struct_decl_as_c_def(struct_decl):
         struct_name = struct_decl["name"]
         struct_members = struct_decl["members"]
 
-        # typedef struct <struct_name> {...} <struct_name>; in order to take into account cases where "struct <struct_name>" is used in the code
-        c_def = f"typedef struct {struct_name} {{\n"
+        c_def = f"struct {struct_name} {{\n"
 
         for member in struct_members:
-            c_def += f"\t{DeclParser._get_var_decl_as_c_decl(member)}\n"
+            c_def += f"    {DeclConverter._get_var_decl_as_c_decl(member)}\n"
 
-        c_def += f"}} {struct_name};"
+        c_def += f"}};"
 
         return c_def
 
     @staticmethod
-    def get_enum_decl_as_c_def(enum_decl):
+    def _get_enum_decl_as_c_def(enum_decl):
         enum_name = enum_decl["name"]
         enum_values = enum_decl["values"]
 
         c_def = f"enum {enum_name} {{\n"
 
         for enum_value in enum_values:
-            c_def += f"\t{enum_value},\n"
+            c_def += f"    {enum_value},\n"
 
-        c_def += f"}} {enum_name};"
+        c_def += f"}};"
 
         return c_def
     
     @staticmethod
     def _get_func_decl_as_c_decl(func_decl):
         name = func_decl["name"]
-        return_type = DeclParser.func_decl["return_type"]
+        return_type = func_decl["return_type"]
         arg_types = func_decl["argument_types"]
 
-        type_specifier, pointer_n, _ = DeclParser._get_type_components(return_type)
+        type_specifier, pointer_n, _ = DeclConverter._get_type_components(return_type)
 
         return_type_str = f"{type_specifier} {'*'*pointer_n}"
 
-        c_decl = f"{return_type_str} {name}("
+        c_decl = f"{return_type_str}{name}("
 
         for i, arg_type in enumerate(arg_types):
-            type_specifier, pointer_n, array_n = DeclParser._get_type_components(arg_type)
-            c_decl += f"{type_specifier} {'*'*pointer_n}arg{i}{f'[{ARRAY_SIZE}]'*array_n};"
+            type_specifier, pointer_n, array_n = DeclConverter._get_type_components(arg_type)
+            c_decl += f"{type_specifier} {'*'*pointer_n}arg{i}{f'[{ARRAY_SIZE}]'*array_n}, "
 
         if len(arg_types) > 0:
             c_decl = c_decl[:-2]
@@ -191,25 +196,34 @@ class DeclParser:
         name = var_decl["name"]
         type = var_decl["type"]
 
-        type_specifier, pointer_n, array_n = DeclParser._get_type_components(type)
+        type_specifier, pointer_n, array_n = DeclConverter._get_type_components(type)
         
         return f"{type_specifier} {'*'*pointer_n}{name}{f'[{ARRAY_SIZE}]'*array_n};"
     
     @staticmethod
+    def _get_alias_as_c_decl(alias):
+        name = alias["name"]
+        type = alias["type"]
+
+        type_specifier, pointer_n, array_n = DeclConverter._get_type_components(type)
+
+        return f"typedef {type_specifier} {'*'*pointer_n}{name}{f'[{ARRAY_SIZE}]'*array_n};"
+
+    @staticmethod
     def _get_type_components(type):
         type2 = type.replace(" ", "")
             
-        has_n_array, array_n = DeclParser._has_n_array(type2)
+        has_n_array, array_n = DeclConverter._has_n_array(type2)
         
         type_specifier = type2
 
         if has_n_array:
-            type_specifier = DeclParser._get_type_without_n_array(type_specifier)
+            type_specifier = DeclConverter._get_type_without_n_array(type_specifier)
 
-        has_n_pointer, pointer_n = DeclParser._has_n_pointer(type_specifier)
+        has_n_pointer, pointer_n = DeclConverter._has_n_pointer(type_specifier)
 
         if has_n_pointer:
-            type_specifier = DeclParser._get_type_without_n_pointer(type_specifier)
+            type_specifier = DeclConverter._get_type_without_n_pointer(type_specifier)
 
         if type_specifier in UNRESOLVED:
             type_specifier = DEFAULT_FOR_UNRESOLVED
@@ -244,10 +258,184 @@ class DeclParser:
 
         return type[:occ]
 
-parser = DeclParser()
-
-var_del = {
-    "name": "a",
-    "type": "ulong"
-}
-
+'''
+test = [
+    {
+        "decl_type": "var",
+        "name": "a",
+        "type": "int"
+    },
+    {
+        "decl_type": "var",
+        "name": "b",
+        "type": "int*"
+    },
+    {
+        "decl_type": "var",
+        "name": "c",
+        "type": "int**"
+    },
+    {
+        "decl_type": "var",
+        "name": "d",
+        "type": "int[]"
+    },
+    {
+        "decl_type": "var",
+        "name": "e",
+        "type": "int[][]"
+    },
+    {
+        "decl_type": "var",
+        "name": "f",
+        "type": "int*[]"
+    },
+    {
+        "decl_type": "var",
+        "name": "g",
+        "type": "int**[]"
+    },
+    {
+        "decl_type": "var",
+        "name": "h",
+        "type": "int*[][]"
+    },
+    {
+        "decl_type": "var",
+        "name": "i",
+        "type": "int**[][]"
+    },
+    {
+        "decl_type": "struct",
+        "name": "A",
+        "members": []
+    },
+    {
+        "decl_type": "struct",
+        "name": "B",
+        "members": [
+            {
+                "name": "a",
+                "type": "int"
+            },
+            {
+                "name": "b",
+                "type": "int*"
+            }
+        ]
+    },
+    {
+        "decl_type": "var",
+        "name": "j",
+        "type": "A"
+    },
+    {
+        "decl_type": "struct",
+        "name": "C",
+        "members": [
+            {
+                "name": "a",
+                "type": "A"
+            },
+            {
+                "name": "b",
+                "type": "B"
+            },
+            {
+                "name": "c",
+                "type": "int"
+            },
+            {
+                "name": "d",
+                "type": "int*"
+            },
+            {
+                "name": "e",
+                "type": "int**"
+            },
+            {
+                "name": "f",
+                "type": "int[]"
+            },
+            {
+                "name": "g",
+                "type": "int[][]"
+            },
+            {
+                "name": "h",
+                "type": "int*[]"
+            },
+            {
+                "name": "i",
+                "type": "int**[]"
+            },
+            {
+                "name": "j",
+                "type": "int*[][]"
+            },
+            {
+                "name": "k",
+                "type": "int**[][]"
+            }
+        ]
+    },
+    {
+        "decl_type": "alias",
+        "name": "int_t",
+        "type": "int"
+    },
+    {
+        "decl_type": "alias",
+        "name": "C_t",
+        "type": "C"
+    },
+    {
+        "decl_type": "alias",
+        "name": "NULL",
+        "type": "void*"
+    },
+    {
+        "decl_type": "alias",
+        "name": "Arr",
+        "type": "int**[][]"
+    },
+    {
+        "decl_type": "struct",
+        "name": "D",
+        "members": [
+            {
+                "name": "a",
+                "type": "C_t"
+            },
+            {
+                "name": "b",
+                "type": "int_t"
+            }
+        ]
+    },
+    {
+        "decl_type": "enum",
+        "name": "E",
+        "values": ["e1", "e2", "e3"]
+    },
+    {
+        "decl_type": "func",
+        "name": "func1",
+        "return_type": "void",
+        "argument_types": []
+    },
+    {
+        "decl_type": "func",
+        "name": "func2",
+        "return_type": "void *",
+        "argument_types": ["UNRESOLVED", "int*[]", "C_t", "int_t"]
+    },
+    {
+        "decl_type": "func",
+        "name": "func3",
+        "return_type": "UNRESOLVED",
+        "argument_types": ["A[]", "B**", "C_t***", "int_t"]
+    }
+]
+DeclConverter.get_declarations_as_c_decls(test)
+'''
