@@ -41,14 +41,14 @@ class DeclParser:
             if isinstance(tree, TerminalNode):
                 return
 
-            declaration_type = node.type_.text
+            declaration_type = node.decl_type.text
 
             if declaration_type == "var":
                 declarations.append(
                     {
                         "decl_type": "var",
                         "name": node.name.text,
-                        "type": node.type_.text
+                        "type": node.var_type.text
                     }
                 )
             elif declaration_type == "func":
@@ -66,7 +66,7 @@ class DeclParser:
                     if isinstance(child, DeclarationParser.MemberContext):
                         members.append({
                             "name": child.name.text,
-                            "type": child.type_.text
+                            "type": child.memb_type.text
                         })
                 declarations.append({
                     "decl_type": "struct",
@@ -87,7 +87,7 @@ class DeclParser:
                     {
                         "decl_type": "alias",
                         "name": node.name.text,
-                        "type": node.type_.text
+                        "type": node.aliased_type.text
                     }
                 )
 
@@ -439,4 +439,7 @@ test = [
 ]
 DeclConverter.get_declarations_as_c_decls(test)
 
-print(DeclParser.get_declarations_as_obj(DeclParser.parse("alias a : b\n")))
+with open("./decls.txt", "r") as f:
+    decls = f.read()
+    print(DeclParser.get_declarations_as_obj(DeclParser.parse(decls)))
+#print(DeclParser.get_declarations_as_obj(DeclParser.parse("alias a : b\n")))

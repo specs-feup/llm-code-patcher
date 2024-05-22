@@ -20,12 +20,12 @@ TYPE: ID '*'* ('[' ']')*;
 start : declaration*  ;
 // TODO think about pointers to functions
 declaration
-    : type=ALIAS name=ID ':' type=TYPE
-    | type=VAR name=ID ':' type=TYPE
-    | type=FUNC name=ID ':' return_type=TYPE ('->' arg_types+=TYPE (',' arg_types+=TYPE)* )?
-    | type=STRUCT name=ID ':' member*
-    | type=ENUM name=ID ':' enum_values+=ID (',' enum_values+=ID)*
+    : decl_type=ALIAS name=ID ':' aliased_type=TYPE
+    | decl_type=VAR name=ID ':' var_type=TYPE
+    | decl_type=FUNC name=ID ':' return_type=TYPE ('->' arg_types+=TYPE (',' arg_types+=TYPE)* )?
+    | decl_type=STRUCT name=ID ':' member*
+    | decl_type=ENUM name=ID ':' enum_values+=ID (',' enum_values+=ID)*
     ;
 
 member 
-    : MEMBER name=ID ':' type=TYPE ;
+    : MEMBER name=ID ':' memb_type=TYPE ;

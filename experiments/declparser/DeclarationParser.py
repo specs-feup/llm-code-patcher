@@ -138,8 +138,10 @@ class DeclarationParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.type_ = None # Token
+            self.decl_type = None # Token
             self.name = None # Token
+            self.aliased_type = None # Token
+            self.var_type = None # Token
             self.return_type = None # Token
             self._TYPE = None # Token
             self.arg_types = list() # of Tokens
@@ -206,29 +208,29 @@ class DeclarationParser ( Parser ):
             if token in [9]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 12
-                localctx.type_ = self.match(DeclarationParser.ALIAS)
+                localctx.decl_type = self.match(DeclarationParser.ALIAS)
                 self.state = 13
                 localctx.name = self.match(DeclarationParser.ID)
                 self.state = 14
                 self.match(DeclarationParser.T__0)
                 self.state = 15
-                localctx.type_ = self.match(DeclarationParser.TYPE)
+                localctx.aliased_type = self.match(DeclarationParser.TYPE)
                 pass
             elif token in [5]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 16
-                localctx.type_ = self.match(DeclarationParser.VAR)
+                localctx.decl_type = self.match(DeclarationParser.VAR)
                 self.state = 17
                 localctx.name = self.match(DeclarationParser.ID)
                 self.state = 18
                 self.match(DeclarationParser.T__0)
                 self.state = 19
-                localctx.type_ = self.match(DeclarationParser.TYPE)
+                localctx.var_type = self.match(DeclarationParser.TYPE)
                 pass
             elif token in [6]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 20
-                localctx.type_ = self.match(DeclarationParser.FUNC)
+                localctx.decl_type = self.match(DeclarationParser.FUNC)
                 self.state = 21
                 localctx.name = self.match(DeclarationParser.ID)
                 self.state = 22
@@ -263,7 +265,7 @@ class DeclarationParser ( Parser ):
             elif token in [7]:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 35
-                localctx.type_ = self.match(DeclarationParser.STRUCT)
+                localctx.decl_type = self.match(DeclarationParser.STRUCT)
                 self.state = 36
                 localctx.name = self.match(DeclarationParser.ID)
                 self.state = 37
@@ -282,7 +284,7 @@ class DeclarationParser ( Parser ):
             elif token in [8]:
                 self.enterOuterAlt(localctx, 5)
                 self.state = 44
-                localctx.type_ = self.match(DeclarationParser.ENUM)
+                localctx.decl_type = self.match(DeclarationParser.ENUM)
                 self.state = 45
                 localctx.name = self.match(DeclarationParser.ID)
                 self.state = 46
@@ -323,7 +325,7 @@ class DeclarationParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
             self.name = None # Token
-            self.type_ = None # Token
+            self.memb_type = None # Token
 
         def MEMBER(self):
             return self.getToken(DeclarationParser.MEMBER, 0)
@@ -361,7 +363,7 @@ class DeclarationParser ( Parser ):
             self.state = 59
             self.match(DeclarationParser.T__0)
             self.state = 60
-            localctx.type_ = self.match(DeclarationParser.TYPE)
+            localctx.memb_type = self.match(DeclarationParser.TYPE)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
