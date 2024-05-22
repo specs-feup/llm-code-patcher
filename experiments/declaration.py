@@ -29,7 +29,7 @@ class DeclParser:
         parser = DeclarationParser(token_stream)
         tree = parser.start()
 
-        #print(tree.toStringTree(recog=parser))
+        print(tree.toStringTree(recog=parser))
 
         return tree
 
@@ -48,7 +48,7 @@ class DeclParser:
                     {
                         "decl_type": "var",
                         "name": node.name.text,
-                        "type": node.type.text
+                        "type": node.type_.text
                     }
                 )
             elif declaration_type == "func":
@@ -66,7 +66,7 @@ class DeclParser:
                     if isinstance(child, DeclarationParser.MemberContext):
                         members.append({
                             "name": child.name.text,
-                            "type": child.type.text
+                            "type": child.type_.text
                         })
                 declarations.append({
                     "decl_type": "struct",
@@ -87,7 +87,7 @@ class DeclParser:
                     {
                         "decl_type": "alias",
                         "name": node.name.text,
-                        "type": node.type.text
+                        "type": node.type_.text
                     }
                 )
 
@@ -113,9 +113,9 @@ class DeclConverter:
         c_declarations += map(DeclConverter._get_func_decl_as_c_decl, function_decls)
         c_declarations += map(DeclConverter._get_var_decl_as_c_decl, var_decls)
 
-        #for c_decl in c_declarations:
-        #    print(c_decl)
-        #    print()
+        for c_decl in c_declarations:
+            print(c_decl)
+            print()
 
         return c_declarations
     
@@ -258,7 +258,7 @@ class DeclConverter:
 
         return type[:occ]
 
-'''
+
 test = [
     {
         "decl_type": "var",
@@ -438,4 +438,5 @@ test = [
     }
 ]
 DeclConverter.get_declarations_as_c_decls(test)
-'''
+
+print(DeclParser.get_declarations_as_obj(DeclParser.parse("alias a : b\n")))
