@@ -251,8 +251,8 @@ def create_experiment_metadata(paths: Paths):
         with open(declarations_filepath, 'r') as file:
             declarations_file = file.read()
             #print(declarations_file)
-            tree = DeclParser.parse(declarations_file)
-            experiment["declarations"] = DeclParser.get_declarations_as_json(tree)
+            tree, _, _ = DeclParser.parse(declarations_file)
+            experiment["declarations"] = DeclParser.get_declarations_as_obj(tree)
             file.close()
     except FileNotFoundError:
         print("Declarations file does not exist.")
@@ -498,6 +498,9 @@ def test_all_projects(projects, prompt_template, prompt_template_filename, snipp
 
             save_experiment_result(chat_completion, gen_time, raw_results_path, experiment_name, project_name, project_org, prompt_template_filename)
             #print(prompt)
+
+def analyse_results():
+    pass
 
 def main():
     experiments_path = select_experiments_path()

@@ -35,5 +35,14 @@ class DeclarationListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by DeclarationParser#type.
+    def enterType(self, ctx:DeclarationParser.TypeContext):
+        pass
+
+    # Exit a parse tree produced by DeclarationParser#type.
+    def exitType(self, ctx:DeclarationParser.TypeContext):
+        pass
+
+
 
 del DeclarationParser
