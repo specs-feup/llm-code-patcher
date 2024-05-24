@@ -1,7 +1,8 @@
 from antlr4 import *
+from antlr4.error.ErrorListener import ErrorListener
+
 from declparser.DeclarationLexer import DeclarationLexer
 from declparser.DeclarationParser import DeclarationParser
-import json
 
 UNRESOLVED = ["UNRESOLVED", "Unresolved", "unresolved"] # give some leeway to the LLM for case sensitivity
 
@@ -20,6 +21,40 @@ PROMPT_PRIMITIVE_TYPE_TO_C_TYPE = {
 
 ARRAY_SIZE = 10000
 
+class DeclLexerErrorListener(ErrorListener):
+    def __init__(self):
+        super().__init__()
+        self.errors = []
+
+    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
+        raise Exception(f"Lexing error at line {line}, column {column}: {msg}")
+    
+    def reportAmbiguity(self, recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs):
+        raise Exception("Ambiguity")
+
+    def has_errors(self):
+        return len(self.errors) > 0
+    
+    def get_errors(self):
+        return self.errors
+
+class DeclParserErrorListener(ErrorListener):
+    def __init__(self):
+        super().__init__()
+        self.errors = []
+
+    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
+        raise Exception(f"Syntax error at line {line}, column {column}: {msg}")
+    
+    def reportAmbiguity(self, recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs):
+        raise Exception("Ambiguity")
+    
+    def has_errors(self):
+        return len(self.errors) > 0
+    
+    def get_errors(self):
+        return self.errors
+
 class DeclParser:
     @staticmethod
     def parse(declarations):
@@ -27,12 +62,21 @@ class DeclParser:
         lexer = DeclarationLexer(input_stream)
         token_stream = CommonTokenStream(lexer)
 
+        lexer_error_listener = DeclLexerErrorListener()
+        lexer.removeErrorListeners()
+        lexer.addErrorListener(lexer_error_listener)
+
         parser = DeclarationParser(token_stream)
+
+        parser_error_listener = DeclParserErrorListener()
+        parser.removeErrorListeners()
+        parser.addErrorListener(parser_error_listener)
+
         tree = parser.start()
 
         #print(tree.toStringTree(recog=parser))
 
-        return tree
+        return tree, lexer_error_listener, parser_error_listener
 
     @staticmethod
     def get_declarations_as_obj(tree):
@@ -121,9 +165,9 @@ class DeclConverter:
         c_declarations += map(DeclConverter._get_func_decl_as_c_decl, function_decls)
         c_declarations += map(DeclConverter._get_var_decl_as_c_decl, var_decls)
 
-        for c_decl in c_declarations:
-            print(c_decl)
-            print()
+        #for c_decl in c_declarations:
+        #    print(c_decl)
+        #    print()
 
         return c_declarations
     
@@ -234,11 +278,29 @@ class DeclConverter:
         else:
             return type_specifier
 
-with open("./decls.txt", "r") as f:
-    decls = f.read()
-    decls = DeclParser.get_declarations_as_obj(DeclParser.parse(decls))
+'''
+with open("./decls.txt", "r") as decls_file:
+    decls_str = decls_file.read()
+
+    decls_tree, lexer_error_listener, parser_error_listener = DeclParser.parse(decls_str)
+    
+    if lexer_error_listener.has_errors():
+        for error in lexer_error_listener.get_errors():
+            print(error)
+        exit(1)
+    
+    if parser_error_listener.has_errors():
+        for error in parser_error_listener.get_errors():
+            print(error)
+        exit(1)
+
+    decls = DeclParser.get_declarations_as_obj(decls_tree)
 
     #for decl in decls:
         #print(decl)
 
     c_decls = DeclConverter.get_declarations_as_c_decls(decls)
+
+    for c_decl in c_decls:
+        print(c_decl, end="\n")
+'''
