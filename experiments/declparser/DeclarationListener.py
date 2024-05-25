@@ -44,5 +44,14 @@ class DeclarationListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by DeclarationParser#enumeration.
+    def enterEnumeration(self, ctx:DeclarationParser.EnumerationContext):
+        pass
+
+    # Exit a parse tree produced by DeclarationParser#enumeration.
+    def exitEnumeration(self, ctx:DeclarationParser.EnumerationContext):
+        pass
+
+
 
 del DeclarationParser

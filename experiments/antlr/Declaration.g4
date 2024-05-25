@@ -11,11 +11,14 @@ ALIAS: 'alias' ;
 MEMBER: 'memb' ;
 
 
-ID: [a-zA-Z0-9_]+ ;
+ID: [a-zA-Z_][a-zA-Z0-9_]* ;
+
 PTRS: ('*' WS*)+ ;
 ARRS: ('[' WS*']' WS*)+ ;
+INT: [1-9][0-9]* ;
 
-start : declaration*  ;
+start : (enumeration? declaration)*  ;
+
 // TODO think about pointers to functions
 declaration
     : decl_type=ALIAS name=ID ':' aliased_type=type
@@ -31,4 +34,8 @@ member
 // TODO think about pointers to arrays
 type
     : type_specifier=ID ptr_n=PTRS? arr_n=ARRS?
+    ;
+
+enumeration
+    : INT '.'
     ;

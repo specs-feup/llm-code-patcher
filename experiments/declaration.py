@@ -86,6 +86,9 @@ class DeclParser:
             if isinstance(tree, TerminalNode):
                 return
 
+            if isinstance(node, DeclarationParser.EnumerationContext):
+                continue
+
             declaration_type = node.decl_type.text
 
             if declaration_type == "var":
