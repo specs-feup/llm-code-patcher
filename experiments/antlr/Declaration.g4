@@ -29,7 +29,7 @@ declaration
     ;
 
 member 
-    : MEMBER name=ID ':' memb_type=type ;
+    : '-'? MEMBER name=ID ':' memb_type=type ;
 
 // TODO think about pointers to arrays
 type
