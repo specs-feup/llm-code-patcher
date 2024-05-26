@@ -15,7 +15,7 @@ ID: [a-zA-Z_][a-zA-Z0-9_]* ;
 
 PTRS: ('*' WS*)+ ;
 ARRS: ('[' WS*']' WS*)+ ;
-INT: [1-9][0-9]* ;
+INT: '0' | [1-9][0-9]* ;
 
 start : (enumeration? declaration)*  ;
 
