@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 from error import extract_errors, parse_errors, get_errors_as_str
 from utils import has_extension, get_last_path_component, get_files_from_path, remove_first_path_component
 from declaration import DeclParser
+from evaluation import evaluate_experiment_result
 
 CODE_TAG = "<CODE>"
 ERRORS_TAG = "<ERRORS>"
@@ -309,8 +310,47 @@ def run_experiments(paths: Paths):
         if continue_exec.lower() in ["n", "no"]:
             break
 
-def analyse_experiments(paths: Paths):
-    print("Analysing experiments..")
+def evaluate_results(project_id, paths: Paths):
+    print("Evaluating experiment results..")
+    
+    raw_results_filenames = get_files_from_path(paths.raw_results_path)
+    
+    projects = get_projects(paths.metadata_path)
+    project = projects[project_id]
+
+    for raw_result_filename in raw_results_filenames:
+        print(raw_result_filename)
+        if not has_extension(raw_result_filename, JSON_EXTENSION):
+            continue
+
+        raw_result_path = os.path.join(paths.raw_results_path, raw_result_filename)
+
+        try:
+            with open(raw_result_path, 'r') as raw_result_file:
+                raw_result = json.load(raw_result_file)
+                
+                #print(raw_result)
+                #if not raw_result:
+                #    print(f"Couldn't load result file '{raw_result_filename}'")
+
+                experiment_id = raw_result["experiment"]
+                experiment_snippet = project["experiments"][experiment_id]["snippet"]
+
+                with open(os.path.join(paths.snippets_path, project["metadata"]["snippets"], experiment_snippet)) as file:
+                    code_snippet = file.read()
+
+
+                llm_answer = raw_result["llm_answer"]
+
+                #print(llm_answer)
+                
+                evaluate_experiment_result(llm_answer, code_snippet)
+                
+                raw_result_file.close()
+
+        except Exception as e:
+            print(f"Couldn't open result file '{raw_result_filename}'")
+            raise e
 
 # LLM
 def build_prompt(prompt_template, snippet, errors):
@@ -498,9 +538,7 @@ def test_all_projects(projects, prompt_template, prompt_template_filename, snipp
 
             save_experiment_result(chat_completion, gen_time, raw_results_path, experiment_name, project_name, project_org, prompt_template_filename)
             #print(prompt)
-
-def analyse_results():
-    pass
+    
 
 def main():
     experiments_path = select_experiments_path()
@@ -534,7 +572,7 @@ def main():
     [0] Create new project metadata
     [1] Create new code snippet metadata
     [2] Run experiments
-    [3] Analyse experiments
+    [3] Analyse experiment results
     [4] Exit
             """
         )       
@@ -554,7 +592,7 @@ def main():
         elif option == "2":
             run_experiments(paths)
         elif option == "3":
-            analyse_experiments(paths)
+            evaluate_results("doom", paths)
         elif option == "4":
             break
 

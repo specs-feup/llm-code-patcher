@@ -21,16 +21,21 @@ PROMPT_PRIMITIVE_TYPE_TO_C_TYPE = {
 
 ARRAY_SIZE = 10000
 
+class Error():
+    def __init__(self, kind, message):
+        self.kind = kind
+        self.message = message
+
 class DeclLexerErrorListener(ErrorListener):
     def __init__(self):
         super().__init__()
         self.errors = []
 
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        raise Exception(f"Lexing error at line {line}, column {column}: {msg}")
+        self.errors.append(Error("lexer", f"Lexing error at line {line}, column {column}: {msg}"))
     
     def reportAmbiguity(self, recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs):
-        raise Exception("Ambiguity")
+        raise Exception("Ambiguity error")
 
     def has_errors(self):
         return len(self.errors) > 0
@@ -44,10 +49,10 @@ class DeclParserErrorListener(ErrorListener):
         self.errors = []
 
     def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
-        raise Exception(f"Syntax error at line {line}, column {column}: {msg}")
-    
+        self.errors.append(Error("parser", f"Syntax error at line {line}, column {column}: {msg}"))
+
     def reportAmbiguity(self, recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs):
-        raise Exception("Ambiguity")
+        raise Exception("Ambiguity error")
     
     def has_errors(self):
         return len(self.errors) > 0
@@ -289,12 +294,12 @@ with open("./decls.txt", "r") as decls_file:
     
     if lexer_error_listener.has_errors():
         for error in lexer_error_listener.get_errors():
-            print(error)
+            print(error.message)
         exit(1)
     
     if parser_error_listener.has_errors():
         for error in parser_error_listener.get_errors():
-            print(error)
+            print(error.message)
         exit(1)
 
     decls = DeclParser.get_declarations_as_obj(decls_tree)

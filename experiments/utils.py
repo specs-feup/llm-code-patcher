@@ -1,5 +1,8 @@
 import subprocess
 import os
+import logging
+
+logger = logging.getLogger(__name__)
 
 def has_extension(file_path, target_extension):
     _, file_extension = os.path.splitext(file_path)
@@ -24,8 +27,13 @@ def get_last_path_component(path):
 def get_files_from_path(directory_path):
     return [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
 
+# Used to:
+#   1. retrieve compiler errors
+#   2. compile the patched code
 def compile_with_clang(source_file_path, output_file="a.out"):
-    compile_command = ["clang-15", source_file_path, "-o", output_file, "-ferror-limit=0"]
+    compile_command = ["clang", source_file_path, "-ferror-limit=0", "-S"]
+
+    # TODO assert at least version 15 (for errors on implicit function declarations)
 
     try:
         result = subprocess.run(compile_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
