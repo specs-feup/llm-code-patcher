@@ -2,6 +2,5 @@
     "project": "DOOM",
     "org": "id-Software",
     "repository": "https://github.com/id-Software/DOOM",
-    "license": "GPLv2",
-    "snippets": "doom"
+    "license": "GPLv2"
 }

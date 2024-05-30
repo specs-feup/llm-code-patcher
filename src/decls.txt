@@ -1,0 +1,50 @@
+var a : int
+var b : int*
+var c : int**
+var d : int[    ]
+var e : int [][]
+var f : int* []
+var g : int*  * []
+var h : int*[][]
+var i : int** []
+
+struct A :
+
+struct B :
+    memb a : int
+    memb b : int*
+
+var j : A
+
+struct C :
+    memb a : A
+    memb b : B
+    memb c : int
+    memb d : int *
+    memb e: int **
+    memb f : int []
+    memb g : int [][]
+    memb h : int * []
+    memb i : int **[]
+    memb j : int *[][]
+    memb k : int **[][]
+
+alias int_t : int
+
+alias C_t : C
+
+alias void_ptr : void*
+
+alias PtrArr : int **[][]
+
+struct D :
+    memb a : C_t
+    memb b : int_t
+
+enum E : e1, e2, e3
+
+func f1 : void
+
+func f2 : void * -> UNRESOLVED, int*[], C_t, int_t
+
+func f3 : UNRESOLVED -> A[], B**, C_t***, int_t

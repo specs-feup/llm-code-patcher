@@ -27,6 +27,9 @@ def get_last_path_component(path):
 def get_files_from_path(directory_path):
     return [f for f in os.listdir(directory_path) if os.path.isfile(os.path.join(directory_path, f))]
 
+def get_directories_from_path(directory_path):
+    return [f for f in os.listdir(directory_path) if os.path.isdir(os.path.join(directory_path, f))]
+
 # Used to:
 #   1. retrieve compiler errors
 #   2. compile the patched code

@@ -2,6 +2,5 @@
     "org": "nginx",
     "project": "nginx",
     "repository": "https://github.com/nginx/nginx",
-    "license": "BSD-2-Clause License",
-    "snippets": "nginx"
+    "license": "BSD-2-Clause License"
 }

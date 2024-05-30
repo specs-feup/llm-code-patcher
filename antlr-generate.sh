@@ -7,10 +7,10 @@
 ANTLR_PATH=""
 
 # Set the input grammar file
-GRAMMAR_FILE="./antlr/Declaration.g4"
+GRAMMAR_FILE="./src/antlr/Declaration.g4"
 
 # Set the output directory for generated files
-OUTPUT_DIR="declparser"
+OUTPUT_DIR="./src/declparser"
 
 # Generate the ANTLR files
 java -jar $ANTLR_PATH -o $OUTPUT_DIR -Dlanguage=Python3 -Xexact-output-dir $GRAMMAR_FILE
